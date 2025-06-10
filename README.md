@@ -1,4 +1,10 @@
-## Hi there 👋
+This has to work. 
+The final draft.
+Forty years. Probably Twenty more than I deserve and Twenty shy of what I need.
+No more fun.
+no more parties.
+no more hobbies. 
+just this now
 
 <!--
 **fuax-art/fuax-art** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
