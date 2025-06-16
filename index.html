@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Portfolio - Industrial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Mad Max Palette */
+            --rust-red: #8B2635;
+            --charcoal-teal: #2F4F4F;
+            --burnt-umber: #8A3324;
+            --steel-blue: #36648B;
+            --copper-patina: #7C9885;
+            --ash-pink: #C4A484;
+            --oil-black: #1C1C1C;
+            --sand-storm: #D2B48C;
+            --warning-orange: #CC4125;
+            
+            /* Electric accents */
+            --electric-teal: #00FFFF;
+            --hot-pink: #FF1493;
+            
+            /* Industrial grays */
+            --concrete: #6B7280;
+            --steel: #9CA3AF;
+            --chrome: #E5E7EB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background: linear-gradient(135deg, var(--oil-black) 0%, var(--charcoal-teal) 100%);
+            color: var(--chrome);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(28, 28, 28, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--steel-blue);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--electric-teal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--chrome);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--electric-teal);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rust-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Easter Egg Counter */
+        .easter-egg {
+            position: relative;
+            width: 12px;
+            height: 12px;
+            background: var(--rust-red);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(139, 38, 53, 0.5);
+        }
+
+        .easter-egg:hover {
+            background: var(--warning-orange);
+            box-shadow: 0 0 20px rgba(204, 65, 37, 0.8);
+            transform: scale(1.2);
+        }
+
+        .easter-egg.pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(139, 38, 53, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(139, 38, 53, 1); }
+            100% { box-shadow: 0 0 10px rgba(139, 38, 53, 0.5); }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: 
+                linear-gradient(rgba(28, 28, 28, 0.7), rgba(47, 79, 79, 0.7)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="concrete" patternUnits="userSpaceOnUse" width="20" height="20"><rect width="20" height="20" fill="%23252525"/><circle cx="5" cy="5" r="1" fill="%23333"/><circle cx="15" cy="15" r="0.5" fill="%23222"/></pattern></defs><rect width="100" height="100" fill="url(%23concrete)"/></svg>');
+            background-size: 200px 200px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            color: var(--chrome);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.2rem;
+            color: var(--electric-teal);
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-content .description {
+            max-width: 600px;
+            font-size: 1rem;
+            color: var(--steel);
+            line-height: 1.8;
+            margin: 0 auto 3rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--rust-red);
+            color: var(--rust-red);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            color: var(--chrome);
+            border-color: var(--warning-orange);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--rust-red);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 6rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: var(--electric-teal);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--rust-red);
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .portfolio-item {
+            background: rgba(47, 79, 79, 0.3);
+            border: 1px solid var(--steel-blue);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--electric-teal);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .portfolio-item h3 {
+            color: var(--chrome);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .portfolio-item p {
+            color: var(--steel);
+            font-size: 0.9rem;
+        }
+
+        /* Blog Preview */
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-post {
+            background: rgba(28, 28, 28, 0.8);
+            border-left: 4px solid var(--rust-red);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .blog-post:hover {
+            border-left-color: var(--warning-orange);
+            transform: translateX(10px);
+        }
+
+        .blog-post h3 {
+            color: var(--chrome);
+            margin-bottom: 1rem;
+        }
+
+        .blog-post .date {
+            color: var(--electric-teal);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post p {
+            color: var(--steel);
+            line-height: 1.6;
+        }
+
+        /* Web Apps */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .app-card {
+            background: rgba(47, 79, 79, 0.2);
+            border: 2px solid var(--steel-blue);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .app-card:hover {
+            border-color: var(--electric-teal);
+            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.1);
+        }
+
+        .app-card h3 {
+            color: var(--chrome);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .app-launch {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--steel-blue);
+            color: var(--chrome);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .app-launch:hover {
+            background: var(--electric-teal);
+            color: var(--oil-black);
+        }
+
+        /* Contact Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--chrome);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(47, 79, 79, 0.3);
+            border: 1px solid var(--steel-blue);
+            color: var(--chrome);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--electric-teal);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .submit-btn {
+            background: var(--rust-red);
+            color: var(--chrome);
+            border: none;
+            padding: 1rem 2rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--warning-orange);
+        }
+
+        /* Newsletter Signup */
+        .newsletter {
+            background: rgba(28, 28, 28, 0.8);
+            padding: 2rem;
+            border: 1px solid var(--steel-blue);
+        }
+
+        .newsletter h3 {
+            color: var(--electric-teal);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            background: rgba(47, 79, 79, 0.3);
+            border: 1px solid var(--steel-blue);
+            color: var(--chrome);
+        }
+
+        .newsletter-btn {
+            padding: 1rem 1.5rem;
+            background: var(--steel-blue);
+            color: var(--chrome);
+            border: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--electric-teal);
+            color: var(--oil-black);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--oil-black);
+            border: 2px solid var(--steel-blue);
+            padding: 2rem;
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--chrome);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--rust-red);
+        }
+
+        .portfolio-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--rust-red) var(--oil-black);
+        }
+
+        .portfolio-slide {
+            flex: 0 0 300px;
+            background: rgba(47, 79, 79, 0.3);
+            padding: 1.5rem;
+            border: 1px solid var(--steel-blue);
+        }
+
+        .portfolio-slide h4 {
+            color: var(--electric-teal);
+            margin-bottom: 1rem;
+        }
+
+        /* Easter Egg Modal */
+        .easter-modal {
+            text-align: center;
+        }
+
+        .easter-modal h2 {
+            color: var(--hot-pink);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .easter-modal .video-placeholder {
+            width: 100%;
+            height: 300px;
+            background: rgba(47, 79, 79, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--chrome);
+            margin-bottom: 2rem;
+            border: 1px solid var(--steel-blue);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--oil-black);
+            border-top: 2px solid var(--steel-blue);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer p {
+            color: var(--steel);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+                letter-spacing: 4px;
+            }
+            
+            .section {
+                padding: 4rem 1rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">Artist</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#apps">Apps</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="easter-egg pulse" id="easterEgg"></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Industrial Artist</h1>
+            <p class="subtitle">Digital • Traditional • Experimental</p>
+            <p class="description">
+                Crafting visual experiences through the lens of industrial aesthetics. 
+                Where concrete meets creativity, where steel meets soul.
+            </p>
+            <a href="#portfolio" class="cta-button">View Work</a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <h2 class="section-title">Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" onclick="openPortfolioModal()">
+                <h3>Digital Compositions</h3>
+                <p>A collection of digital artworks exploring industrial themes and urban decay aesthetics.</p>
+            </div>
+            <div class="portfolio-item" onclick="openPortfolioModal()">
+                <h3>Traditional Works</h3>
+                <p>Mixed media pieces incorporating concrete, steel, and experimental materials.</p>
+            </div>
+            <div class="portfolio-item" onclick="openPortfolioModal()">
+                <h3>Experimental Series</h3>
+                <p>Pushing boundaries with unconventional techniques and industrial materials.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section">
+        <h2 class="section-title">Recent Writing</h2>
+        <div class="blog-posts">
+            <article class="blog-post">
+                <div class="date">June 10, 2025</div>
+                <h3>The Aesthetics of Decay</h3>
+                <p>Exploring how industrial decay becomes a form of unintentional art, and how we can harness these principles in our creative work...</p>
+            </article>
+            <article class="blog-post">
+                <div class="date">June 5, 2025</div>
+                <h3>Digital Tools, Analog Soul</h3>
+                <p>Balancing the precision of digital creation with the unpredictability and soul of traditional mediums...</p>
+            </article>
+            <article class="blog-post">
+                <div class="date">May 28, 2025</div>
+                <h3>Concrete Poetry</h3>
+                <p>How the brutalist architecture movement influences contemporary digital art and design principles...</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Web Apps Section -->
+    <section id="apps" class="section">
+        <h2 class="section-title">Interactive Applications</h2>
+        <div class="apps-grid">
+            <div class="app-card">
+                <h3>Drawing Application</h3>
+                <p>A sophisticated digital drawing tool with industrial-inspired brushes and textures. Create artwork with tools designed for the modern digital artist.</p>
+                <a href="#" class="app-launch">Launch Drawing App</a>
+            </div>
+            <div class="app-card">
+                <h3>Particle Playground</h3>
+                <p>Experiment with particle systems and physics simulations. Generate abstract compositions using industrial-themed particle behaviors.</p>
+                <a href="#" class="app-launch">Launch Particle App</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            
+            <div class="newsletter">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to receive updates on new artwork, blog posts, and exclusive releases.</p>
+                <form class="newsletter-form" id="mailchimp-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+                <p style="font-size: 0.8rem; margin-top: 1rem; color: var(--steel);">
+                    Powered by Mailchimp - Privacy guaranteed
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Industrial Artist. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;">
+                Built with steel, powered by creativity.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolioModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('portfolioModal')">&times;</button>
+            <h2>Portfolio Gallery</h2>
+            <div class="portfolio-slider">
+                <div class="portfolio-slide">
+                    <h4>Artwork Title 1</h4>
+                    <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
+                        [Image Placeholder]
+                    </div>
+                    <p>Description of the artwork and techniques used.</p>
+                </div>
+                <div class="portfolio-slide">
+                    <h4>Artwork Title 2</h4>
+                    <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
+                        [Image Placeholder]
+                    </div>
+                    <p>Description of the artwork and techniques used.</p>
+                </div>
+                <div class="portfolio-slide">
+                    <h4>Artwork Title 3</h4>
+                    <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
+                        [Image Placeholder]
+                    </div>
+                    <p>Description of the artwork and techniques used.</p>
+                </div>
+                <div class="portfolio-slide">
+                    <h4>Artwork Title 4</h4>
+                    <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
+                        [Image Placeholder]
+                    </div>
+                    <p>Description of the artwork and techniques used.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Easter Egg Modal -->
+    <div id="easterModal" class="modal">
+        <div class="modal-content easter-modal">
+            <button class="modal-close" onclick="closeModal('easterModal')">&times;</button>
+            <h2>🎉 You Found It! 🎉</h2>
+            <div class="video-placeholder">
+                <p>Limited Release Teaser Video<br>Coming Soon...</p>
+            </div>
+            <p style="color: var(--electric-teal); margin-bottom: 2rem;">
+                Congratulations on discovering this hidden gem! As a reward for your curiosity, 
+                you'll receive a free NFT from our upcoming limited collection.
+            </p>
+            <p style="color: var(--steel); font-size: 0.9rem;">
+                Stay tuned for more details about the release and your exclusive NFT reward.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Easter egg functionality
+        let clickCount = 0;
+        document.getElementById('easterEgg').addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 1) {
+                // First click - make it more obvious
+                this.style.background = 'var(--warning-orange)';
+                this.style.transform = 'scale(1.5)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 300);
+            } else if (clickCount >= 3) {
+                // Third click - open the modal
+                openModal('easterModal');
+                // Reset for next time
+                clickCount = 0;
+                this.style.background = 'var(--rust-red)';
+            }
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openPortfolioModal() {
+            openModal('portfolioModal');
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(this.id);
+                }
+            });
+        });
+
+        // Contact form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            this.reset();
+        });
+
+        // Newsletter subscription (Mailchimp integration ready)
+        document.getElementById('mailchimp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your Mailchimp integration here
+            // Example: 
+            // const email = this.querySelector('input[type="email"]').value;
+            // submitToMailchimp(email);
+            alert('Thank you for subscribing! You\'ll receive updates about new work and exclusive releases.');
+            this.reset();
+        });
+
+        // Header background opacity on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            const scrolled = window.pageYOffset;
+            const opacity = Math.min(0.95 + (scrolled / 1000) * 0.05, 1);
+            header.style.background = `rgba(28, 28, 28, ${opacity})`;
+        });
+
+        // Intersection Observer for section animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Portfolio slider horizontal scroll with mouse wheel
+        const portfolioSlider = document.querySelector('.portfolio-slider');
+        if (portfolioSlider) {
+            portfolioSlider.addEventListener('wheel', function(e) {
+                if (e.deltaY !== 0) {
+                    e.preventDefault();
+                    this.scrollLeft += e.deltaY;
+                }
+            });
+        }
+
+        // Industrial glitch effect for Easter egg
+        function glitchEffect(element) {
+            const original = element.style.background;
+            const colors = ['var(--rust-red)', 'var(--warning-orange)', 'var(--electric-teal)', 'var(--hot-pink)'];
+            let i = 0;
+            
+            const glitch = setInterval(() => {
+                element.style.background = colors[i % colors.length];
+                i++;
+                if (i > 6) {
+                    clearInterval(glitch);
+                    element.style.background = original;
+                }
+            }, 100);
+        }
+
+        // Add glitch effect to Easter egg on hover
+        document.getElementById('easterEgg').addEventListener('mouseenter', function() {
+            if (Math.random() < 0.3) { // 30% chance of glitch
+                glitchEffect(this);
+            }
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Dynamic typing effect for hero subtitle
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', function() {
+            const subtitle = document.querySelector('.hero-content .subtitle');
+            if (subtitle) {
+                const originalText = subtitle.textContent;
+                setTimeout(() => {
+                    typeWriter(subtitle, originalText, 150);
+                }, 1000);
+            }
+        });
+
+        // Advanced Industrial Sound Effects using Web Audio API
+        class IndustrialSoundEngine {
+            constructor() {
+                this.audioContext = null;
+                this.initialized = false;
+            }
+
+            async init() {
+                if (!this.initialized) {
+                    try {
+                        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        this.initialized = true;
+                    } catch (e) {
+                        console.log('Web Audio API not supported');
+                    }
+                }
+            }
+
+            // Metallic click - steel on steel
+            playMetallicClick() {
+                if (!this.audioContext) return;
+                
+                const oscillator = this.audioContext.createOscillator();
+                const gainNode = this.audioContext.createGain();
+                const filter = this.audioContext.createBiquadFilter();
+                
+                oscillator.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(this.audioContext.destination);
+                
+                // Sharp metallic frequency sweep
+                oscillator.frequency.setValueAtTime(1200, this.audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(200, this.audioContext.currentTime + 0.05);
+                oscillator.type = 'square';
+                
+                // High-pass filter for metallic edge
+                filter.type = 'highpass';
+                filter.frequency.setValueAtTime(300, this.audioContext.currentTime);
+                
+                gainNode.gain.setValueAtTime(0.15, this.audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.08);
+                
+                oscillator.start();
+                oscillator.stop(this.audioContext.currentTime + 0.08);
+            }
+
+            // Hydraulic hiss - for modal opens
+            playHydraulicHiss() {
+                if (!this.audioContext) return;
+                
+                const bufferSize = this.audioContext.sampleRate * 0.3;
+                const buffer = this.audioContext.createBuffer(1, bufferSize, this.audioContext.sampleRate);
+                const data = buffer.getChannelData(0);
+                
+                // Generate pink noise for hydraulic sound
+                let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+                for (let i = 0; i < bufferSize; i++) {
+                    const white = Math.random() * 2 - 1;
+                    b0 = 0.99886 * b0 + white * 0.0555179;
+                    b1 = 0.99332 * b1 + white * 0.0750759;
+                    b2 = 0.96900 * b2 + white * 0.1538520;
+                    b3 = 0.86650 * b3 + white * 0.3104856;
+                    b4 = 0.55000 * b4 + white * 0.5329522;
+                    b5 = -0.7616 * b5 - white * 0.0168980;
+                    const pink = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
+                    b6 = white * 0.115926;
+                    
+                    // Apply envelope for hydraulic effect
+                    const envelope = Math.exp(-i / (bufferSize * 0.4));
+                    data[i] = pink * envelope * 0.1;
+                }
+                
+                const source = this.audioContext.createBufferSource();
+                const filter = this.audioContext.createBiquadFilter();
+                const gainNode = this.audioContext.createGain();
+                
+                source.buffer = buffer;
+                source.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(this.audioContext.destination);
+                
+                // Band-pass filter for realistic hiss
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(800, this.audioContext.currentTime);
+                filter.Q.setValueAtTime(2, this.audioContext.currentTime);
+                
+                gainNode.gain.setValueAtTime(0.2, this.audioContext.currentTime);
+                
+                source.start();
+            }
+
+            // Electric buzz - for hover effects
+            playElectricBuzz() {
+                if (!this.audioContext) return;
+                
+                const oscillator1 = this.audioContext.createOscillator();
+                const oscillator2 = this.audioContext.createOscillator();
+                const gainNode = this.audioContext.createGain();
+                const filter = this.audioContext.createBiquadFilter();
+                
+                oscillator1.connect(filter);
+                oscillator2.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(this.audioContext.destination);
+                
+                // Dual oscillators for electric buzz
+                oscillator1.frequency.setValueAtTime(120, this.audioContext.currentTime);
+                oscillator2.frequency.setValueAtTime(121, this.audioContext.currentTime); // Slight detune for buzz
+                oscillator1.type = 'sawtooth';
+                oscillator2.type = 'sawtooth';
+                
+                // Low-pass filter to tame harshness
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(2000, this.audioContext.currentTime);
+                
+                gainNode.gain.setValueAtTime(0.08, this.audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.15);
+                
+                oscillator1.start();
+                oscillator2.start();
+                oscillator1.stop(this.audioContext.currentTime + 0.15);
+                oscillator2.stop(this.audioContext.currentTime + 0.15);
+            }
+
+            // Steam release - for form submissions
+            playSteamRelease() {
+                if (!this.audioContext) return;
+                
+                const bufferSize = this.audioContext.sampleRate * 0.8;
+                const buffer = this.audioContext.createBuffer(1, bufferSize, this.audioContext.sampleRate);
+                const data = buffer.getChannelData(0);
+                
+                // Generate filtered white noise burst
+                for (let i = 0; i < bufferSize; i++) {
+                    const envelope = Math.exp(-i / (bufferSize * 0.2)) * Math.pow(Math.random(), 0.5);
+                    data[i] = (Math.random() * 2 - 1) * envelope * 0.3;
+                }
+                
+                const source = this.audioContext.createBufferSource();
+                const filter1 = this.audioContext.createBiquadFilter();
+                const filter2 = this.audioContext.createBiquadFilter();
+                const gainNode = this.audioContext.createGain();
+                
+                source.buffer = buffer;
+                source.connect(filter1);
+                filter1.connect(filter2);
+                filter2.connect(gainNode);
+                gainNode.connect(this.audioContext.destination);
+                
+                // Cascaded filters for steam effect
+                filter1.type = 'highpass';
+                filter1.frequency.setValueAtTime(1000, this.audioContext.currentTime);
+                filter2.type = 'lowpass';
+                filter2.frequency.setValueAtTime(8000, this.audioContext.currentTime);
+                filter2.frequency.exponentialRampToValueAtTime(2000, this.audioContext.currentTime + 0.5);
+                
+                gainNode.gain.setValueAtTime(0.25, this.audioContext.currentTime);
+                
+                source.start();
+            }
+
+            // Concrete scrape - for page transitions
+            playConcreteScrape() {
+                if (!this.audioContext) return;
+                
+                const oscillator = this.audioContext.createOscillator();
+                const filter = this.audioContext.createBiquadFilter();
+                const gainNode = this.audioContext.createGain();
+                const lfo = this.audioContext.createOscillator();
+                const lfoGain = this.audioContext.createGain();
+                
+                // LFO for frequency modulation
+                lfo.connect(lfoGain);
+                lfoGain.connect(oscillator.frequency);
+                lfo.frequency.setValueAtTime(8, this.audioContext.currentTime);
+                lfoGain.gain.setValueAtTime(50, this.audioContext.currentTime);
+                
+                oscillator.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(this.audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(80, this.audioContext.currentTime);
+                oscillator.type = 'sawtooth';
+                
+                // Band-pass filter for concrete texture
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(400, this.audioContext.currentTime);
+                filter.Q.setValueAtTime(8, this.audioContext.currentTime);
+                
+                gainNode.gain.setValueAtTime(0.12, this.audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.4);
+                
+                lfo.start();
+                oscillator.start();
+                lfo.stop(this.audioContext.currentTime + 0.4);
+                oscillator.stop(this.audioContext.currentTime + 0.4);
+            }
+
+            // Machine startup - for Easter egg
+            playMachineStartup() {
+                if (!this.audioContext) return;
+                
+                const oscillator1 = this.audioContext.createOscillator();
+                const oscillator2 = this.audioContext.createOscillator();
+                const filter = this.audioContext.createBiquadFilter();
+                const gainNode = this.audioContext.createGain();
+                const delay = this.audioContext.createDelay();
+                const delayGain = this.audioContext.createGain();
+                
+                oscillator1.connect(filter);
+                oscillator2.connect(filter);
+                filter.connect(gainNode);
+                filter.connect(delay);
+                delay.connect(delayGain);
+                delayGain.connect(gainNode);
+                gainNode.connect(this.audioContext.destination);
+                
+                // Machine startup frequency sweep
+                oscillator1.frequency.setValueAtTime(40, this.audioContext.currentTime);
+                oscillator1.frequency.exponentialRampToValueAtTime(400, this.audioContext.currentTime + 1.2);
+                oscillator2.frequency.setValueAtTime(41, this.audioContext.currentTime);
+                oscillator2.frequency.exponentialRampToValueAtTime(401, this.audioContext.currentTime + 1.2);
+                
+                oscillator1.type = 'sawtooth';
+                oscillator2.type = 'sawtooth';
+                
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(200, this.audioContext.currentTime);
+                filter.frequency.exponentialRampToValueAtTime(2000, this.audioContext.currentTime + 1.2);
+                
+                delay.delayTime.setValueAtTime(0.1, this.audioContext.currentTime);
+                delayGain.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+                
+                gainNode.gain.setValueAtTime(0.15, this.audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 1.4);
+                
+                oscillator1.start();
+                oscillator2.start();
+                oscillator1.stop(this.audioContext.currentTime + 1.4);
+                oscillator2.stop(this.audioContext.currentTime + 1.4);
+            }
+        }
+
+        // Initialize sound engine
+        const soundEngine = new IndustrialSoundEngine();
+
+        // Enhanced sound integration with user interaction
+        let soundsEnabled = false;
+
+        // Initialize sounds on first user interaction (required by browsers)
+        async function initializeSounds() {
+            if (!soundsEnabled) {
+                await soundEngine.init();
+                soundsEnabled = true;
+                console.log('🔊 Industrial sound system activated');
+            }
+        }
+
+        // Add sound to interactive elements with specific industrial sounds
+        document.querySelectorAll('.cta-button, .app-launch').forEach(button => {
+            button.addEventListener('click', async function() {
+                await initializeSounds();
+                soundEngine.playMetallicClick();
+            });
+        });
+
+        document.querySelectorAll('.submit-btn, .newsletter-btn').forEach(button => {
+            button.addEventListener('click', async function() {
+                await initializeSounds();
+                soundEngine.playSteamRelease();
+            });
+        });
+
+        // Hover sounds for navigation and portfolio items
+        document.querySelectorAll('.nav-menu a, .portfolio-item').forEach(element => {
+            element.addEventListener('mouseenter', async function() {
+                await initializeSounds();
+                if (Math.random() < 0.7) { // 70% chance to avoid overwhelming
+                    soundEngine.playElectricBuzz();
+                }
+            });
+        });
+
+        // Modal sounds
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Play hydraulic hiss for modals
+            if (soundsEnabled) {
+                soundEngine.playHydraulicHiss();
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            // Play concrete scrape for closing
+            if (soundsEnabled) {
+                soundEngine.playConcreteScrape();
+            }
+        }
+
+        // Enhanced Easter egg with machine startup sound
+        let clickCount = 0;
+        document.getElementById('easterEgg').addEventListener('click', async function() {
+            await initializeSounds();
+            clickCount++;
+            if (clickCount === 1) {
+                // First click - metallic click
+                soundEngine.playMetallicClick();
+                this.style.background = 'var(--warning-orange)';
+                this.style.transform = 'scale(1.5)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 300);
+            } else if (clickCount >= 3) {
+                // Third click - machine startup + modal
+                soundEngine.playMachineStartup();
+                setTimeout(() => {
+                    openModal('easterModal');
+                }, 600); // Delay to sync with sound
+                clickCount = 0;
+                this.style.background = 'var(--rust-red)';
+            } else {
+                // Second click - electric buzz
+                soundEngine.playElectricBuzz();
+            }
+        });
+
+        // Sound control toggle (for accessibility)
+        function createSoundToggle() {
+            const toggle = document.createElement('button');
+            toggle.innerHTML = '🔊';
+            toggle.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: var(--steel-blue);
+                color: var(--chrome);
+                border: 2px solid var(--rust-red);
+                font-size: 1.2rem;
+                cursor: pointer;
+                z-index: 1000;
+                transition: all 0.3s ease;
+            `;
+            
+            toggle.addEventListener('click', function() {
+                soundsEnabled = !soundsEnabled;
+                this.innerHTML = soundsEnabled ? '🔊' : '🔇';
+                this.style.background = soundsEnabled ? 'var(--steel-blue)' : 'var(--concrete)';
+                
+                if (soundsEnabled) {
+                    initializeSounds().then(() => {
+                        soundEngine.playMetallicClick();
+                    });
+                }
+            });
+            
+            document.body.appendChild(toggle);
+        }
+
+        // Add sound toggle on page load
+        window.addEventListener('load', createSoundToggle);
+
+        // Keyboard shortcuts for power users
+        document.addEventListener('keydown', function(e) {
+            // Alt + P = Portfolio
+            if (e.altKey && e.key === 'p') {
+                e.preventDefault();
+                document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+            }
+            // Alt + B = Blog
+            if (e.altKey && e.key === 'b') {
+                e.preventDefault();
+                document.getElementById('blog').scrollIntoView({ behavior: 'smooth' });
+            }
+            // Alt + C = Contact
+            if (e.altKey && e.key === 'c') {
+                e.preventDefault();
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            }
+            // Alt + E = Easter egg
+            if (e.altKey && e.key === 'e') {
+                e.preventDefault();
+                document.getElementById('easterEgg').click();
+            }
+            // Escape = Close modals
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    closeModal(modal.id);
+                });
+            }
+        });
+
+        // Console easter egg for developers
+        console.log(`
+        ╔══════════════════════════════════════╗
+        ║     INDUSTRIAL ARTIST PORTFOLIO      ║
+        ║                                      ║
+        ║  Built with steel and precision      ║
+        ║  Powered by creativity and code      ║
+        ║                                      ║
+        ║  Keyboard shortcuts:                 ║
+        ║  Alt + P = Portfolio                 ║
+        ║  Alt + B = Blog                      ║
+        ║  Alt + C = Contact                   ║
+        ║  Alt + E = Easter Egg                ║
+        ║                                      ║
+        ║  Made with ♥ and industrial coffee   ║
+        ╚══════════════════════════════════════╝
+        `);
+
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const perfData = performance.timing;
+                const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+                console.log(`Site loaded in ${loadTime}ms - Industrial efficiency achieved.`);
+            }, 0);
+        });
+    </script>
+</body>
+</html>
