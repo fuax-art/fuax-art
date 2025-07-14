@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--this is the displayed title-->
+    <title>Monsters In The Mirror</title>
+      <style>
+    body { background-color: #000; color: #00FF00; font-family: 'VCR OSD Mono', monospace; }
+    h1, h2 { color: #FF0080; text-shadow: 0 0 10px #FF0080; }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    img { max-width: 100%; }
+  </style>
+</head>
+<body>
+  
+            
+     <div class="container">
+        <article class="blog-post">
+            <!--this header is the title-->
+            <h1 style="text-align: center; font-weight: bold; text-decoration: underline; color: rgb(255, 0, 0);">Monsters In The Mirror</h1>
+            <pre style="white-space: pre-wrap; word-wrap: break-word;">
+           The Monster and the Canvas: A Soliloquy in Smoke
+The mirror shows a stranger, haunted by a past he barely recognizes. Where is the man they knew? The calm voice, the steady hand, the patience that could outlast stone. Now, only the monster remains, a creature born of stress and despair, fueled by a relentless, nameless anger. I watch him, this broken reflection, as he paces the invisible confines of a mind consumed by self-loathing. It starts small, a whisper of inadequacy, then escalates to a roar. The fists clench. The words, sharper than any blade, are reserved only for himself, a relentless, verbal lashing until the energy for destruction wanes.
+
+And then, the tearing. The breaking. The self-punishment for a crime he can't name, often something trivial. Is this what it means to be an artist? This constant, brutal battle against the self, this gnawing feeling of inadequacy that eats away at the core of who I am? He sees the world through a haze of frustration, knowing the answers should be there, but they’re just out of reach.
+
+But then, the ritual. The cigarette, a quiet ember in the encroaching darkness. And the hand, against all logic, against all the screaming voices, reaches. It finds the pen, the brush, the tablet. A defiant act. A fragile peace found only in the making. It’s not about grand stages or roaring applause. It’s about silencing the internal din, if only for a moment.
+
+The ideas still surge, a curse and a blessing. Brilliant designs, intricate plans for survival, for success. They explode in the mind, vibrant and alive, but the world outside offers no fertile ground for them to take root. Forty years. Homeless. Jobless. The weight of it all crushes the spirit, turning grand visions into dust. The voice in his head, mine, whispers the harsh truths: Not good enough. Never will be. The art enterprise? A folly. Dreams? Just dreams. Hope? A flickering candle in a hurricane.
+
+It feels like the universe itself is telling him to give up, to let go of this agonizing need to create.
+
+And yet… the hand still reaches. The colors still beckon. The ideas, cursed as they may be, still bloom in the deepest, most shadowed parts of his mind. I don’t know why he does it. Why this obligation to create constantly persists, even when it leads to such pain. But in those moments of making, however fleeting, the monster retreats, and a glimpse of the man he once was, a flicker of peace, emerges.
+
+Maybe it's not for them. Maybe it's not for a career, or fame, or money. Maybe it's just for him, this silent dance with lines and light, a desperate, solitary act of creation to make sense of the chaos inside. Maybe it’s the only way to prove he’s still here. And maybe, in the end, that's enough.
+                </pre>
+        </article>
+        <!-- this is for comments, disable them by moving the close comment to the end of section-->
+        <section class="visitor-comments">
+            <h2>Slow Burn</h2>
+            <textarea class="comment-textarea" placeholder="Speak Truth"></textarea>
+            <button class="submit-comment">Fire Away</button>
+            <div class="comments-section">
+                <!-- Comments will be dynamically added here -->
+            </div>
+            <script>
+                document.querySelector('.submit-comment').addEventListener('click', function() {
+                    const textarea = document.querySelector('.comment-textarea');
+                    const commentText = textarea.value.trim();
+                    
+                    if (commentText) {
+                        const commentPreview = document.createElement('div');
+                        commentPreview.className = 'comment-preview';
+                        commentPreview.innerHTML = `
+                            <p>${commentText.substring(0, 100)}...</p>
+                            <button class="view-full-comment">View Full Story</button>
+                        `;
+
+                        const fullCommentModal = document.createElement('div');
+                        fullCommentModal.className = 'full-comment-modal';
+                        fullCommentModal.innerHTML = `
+                            <div class="modal-content">
+                                <button class="close-modal">&times;</button>
+                                <div contenteditable="true" class="full-comment-text">${commentText}</div>
+                            </div>
+                        `;
+                        fullCommentModal.style.display = 'none';
+
+                        commentPreview.querySelector('.view-full-comment').addEventListener('click', function() {
+                            fullCommentModal.style.display = 'block';
+                        });
+
+                        fullCommentModal.querySelector('.close-modal').addEventListener('click', function() {
+                            fullCommentModal.style.display = 'none';
+                        });
+
+                        document.querySelector('.comments-section').appendChild(commentPreview);
+                        document.body.appendChild(fullCommentModal);
+
+                        textarea.value = ''; // Clear the textarea
+                    } else {
+                        alert('Please write a comment before submitting.');
+                    }
+                });
+            </script>
+            <style>
+                .comment-preview {
+                    border: 1px solid #FF0080;
+                    padding: 10px;
+                    margin: 10px 0;
+                    background-color: #000000;
+                }
+                .full-comment-modal {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.8);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .modal-content {
+                    background: #000;
+                    padding: 20px;
+                    border-radius: 5px;
+                    width: 80%;
+                    max-width: 600px;
+                    position: relative;
+                }
+                .close-modal {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    background: none;
+                    border: none;
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+                .full-comment-text {
+                    border: 1px solid #FF0080;
+                    padding: 10px;
+                    min-height: 200px;
+                    outline: none;
+                    color: #00FF00;
+                    background-color: #000;
+                    font-family: 'VCR OSD Mono', monospace;
+                    font-size: 16px;
+                }
+                .full-comment-text:focus {
+                    border-color: #FF0080;
+                }
+            </style>
+        </section>
+    </div>
+    <script>
+        window.onload = function() {
+            alert("!!!WARNING!!!!: This page contains sensitive content along with some adult language, so if you are kind of a little bitch maybe just leave..");
+        };
+    </script>
+</body>
+</html>

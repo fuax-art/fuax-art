@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The whole fuckin sando</title>
+     <style>
+    body { 
+        background-color: #000; 
+        color: #00FF00; 
+        font-family: 'VCR OSD Mono', monospace; 
+        font-size: 1.1rem; /* Add or adjust this line */
+    }
+    h1, h2 { color: #FF0080; text-shadow: 0 0 10px #FF0080; }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    img { max-width: 100%; }
+    .image-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    .image-row .image.avatar img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid #FF0080;
+        box-shadow: 0 0 10px #FF0080;
+    }
+    .carousel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .carousel-images {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    .carousel-images img {
+        min-width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid #FF0080;
+        box-shadow: 0 0 10px #FF0080;
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .carousel-images img.active {
+        display: block;
+        position: relative;
+    }
+    .carousel-btn {
+        background: #FF0080;
+        color: #fff;
+        border: none;
+        font-size: 2rem;
+        padding: 10px 15px;
+        border-radius: 50%;
+        cursor: pointer;
+        margin: 0 10px;
+        box-shadow: 0 0 10px #FF0080;
+        transition: background 0.2s;
+    }
+    .carousel-btn:hover {
+        background: #cf6100;
+    }
+    .comment-preview {
+        border: 1px solid #cf6100;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #000000;
+    }
+    .full-comment-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .modal-content {
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        width: 80%;
+        max-width: 600px;
+        position: relative;
+    }
+    .close-modal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .full-comment-text {
+        border: 1px solid #ff6f00;
+        padding: 10px;
+        min-height: 200px;
+        outline: none;
+    }
+    .full-comment-text:focus {
+        border-color: #ff4000;
+    }
+    .lightbox-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.95);
+        justify-content: center;
+        align-items: center;
+    }
+    .lightbox-modal img {
+        max-width: 90vw;
+        max-height: 90vh;
+        border-radius: 10px;
+        border: 4px solid #FF0080;
+        box-shadow: 0 0 30px #FF0080;
+    }
+    .lightbox-modal .close-lightbox {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        color: #fff;
+        font-size: 3rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 10000;
+    }
+  </style>
+</head>
+<body>
+    <div class="image-row">
+        <span class="image avatar"><img src="images/mikenmecruise1.jpg" alt="cruise1" /></span>
+        <span class="image avatar"><img src="images/Herd.jpg" alt="Mike" /></span>
+        <span class="image avatar"><img src="images/mikenmecruise2.jpeg" alt="cruise2" /></span>
+    </div>
+            
+    <div class="carousel">
+        <button class="carousel-btn left">&#8592;</button>
+        <div class="carousel-images">
+            <img src="images/mikenmecruise1.jpg" alt="cruise1" />
+            <img src="images/Herd.jpg" alt="Mike" />
+            <img src="images/mikenmecruise2.jpeg" alt="cruise2" />
+        </div>
+        <button class="carousel-btn right">&#8594;</button>
+    </div>
+
+    <div class="lightbox-modal" id="lightboxModal">
+        <button class="close-lightbox" id="closeLightbox">&times;</button>
+        <img src="" alt="Enlarged image" id="lightboxImg">
+    </div>
+
+    <div class="container">
+        <article class="blog-post">
+            <h1 style="text-align: center; font-weight: bold; text-decoration: underline; color: rgb(255, 0, 0);">Michael</h1>
+            <pre style="white-space: pre-wrap; word-wrap: break-word;">
+        Ah, the digital ether, a space unvisited for a span. Now, a need to unburden the soul takes hold. A yearning, perhaps a touch of vanity, to have these sentiments resonate with familiar hearts, even in the silence between exchanges. A curious human trait, this desire for our wounds to be witnessed. It almost invites a wry smile, this modern dance of seeking connection amidst solitude, these internal dialogues with selves that can, in truth, be rather… abrasive.
+
+                Lost you, my best friend, the other day.
+                Thirty-one Fucking years man.
+                My best man.
+                The reason I still strum these damn strings. Why I kept Playing. 
+                Fucking Stupid Snood
+                Stupid Austin Powers jokes.
+                Stupid crepes.
+                Love you, man. This ain't right.
+                Making me freaking cry. You know.
+                
+    Oh yeah, forgot to say last time we talked: Metal Licca still sucks. Motley Crue owns them. No arguments from you anymore, huh? Finally saw the light. Bad joke but I know Mike would laugh at it.
+                These involuntary tears, a testament to the injustice. 
+                A bitter irony that one such as you, a soul of inherent goodness, is taken, while I, a creature more akin to chaos and conflagration, remain. I am the embodiment of destruction, yet I endure.
+               
+               
+                Mike would give you his shirt if you just looked like you wanted it. Didn't even need it.
+                He was always laughing, or about to make you laugh.
+                He listened when I'd fall apart with feelings I couldn't name (still can't). 
+                No judging. No trying to fix it. Just listened. Then he'd crack a joke. 
+                
+                He'd get seriously pissed if you dropped stuff down his plumbers crack. Real pissed. Like really fucking pissed. Don't ask how I know that. 
+                
+                He's the guy who'd go out of his way to make sure you were okay. Pick you up from juvie and take you home after your folks got raided, put a hand on your shoulder while you tried not to cry. Just being there.
+                 Or let you crash at his place when you were on parole and everyone else was looking for a reason to ditch you. Never looked down on you. 
+                 I mean, I think he would do that. Never been in trouble myself. Right Mike? 
+                 I was always the good one. It was you that always got in trouble, you who liked running from the oinkers. Haha 
+                 You were always the one messing with the cops. Not me. I was the good one. Haha.
+                 Remember up on the mesa in my old ford flying past that sheriff with my lights off? Haha. I was such a nutjob still am. I thought we were going to jail. You were laughing so hard you almost pissed. The look on Burns' face was priceless.
+                 
+                 Even with all my crap, he never acted like he was better.
+                  Despite my shortcomings he was never looking down. Never better than.
+
+                
+                
+                Except with singing.
+                
+                You motherfucker. Seriously. Correct my singing every single time if I wasn't perfect. Haha. 
+                
+                We were just talking about that a few weeks ago, maybe a month. Said he knew I could do better. Jerk. I sing off-key on purpose now. Because screw that. Nobody tells me what to do. Remington does what he wants. Speaking of...
+                Everything I do now reminds me of us hanging out or something stupid like that. Wish I'd come around sooner. Called more. Thanks for the phone, by the way. Only way I can write this or use Facebook on mobile is because you gave me one of your old ones. broken ass screen slicing my fingers but now I won't get rid of it. 
+                Sorry if I ever took you for granted, bro.
+                
+                
+                Had to take a break... more tears. Shit.
+                 Fuck. 
+                 
+                Always been a crybaby. At least I'm better at it now. Used to suck. Tried to hold it in. Big mistake. Gotta let it out before you talk. Haha. Only person to ever tell me to shut up while I was crying. Instant laughter. Love you, bro. Sorry if I didn't say it enough.
+                
+                I hate that you won't ever get to really meet my daughter. She's nine now. Fucking amazing man. So smart. So bright eyed. All the best shit about me. Fucking best thing I'll ever do with my life. You would have loved her man she has our sense of humor and is always outside the box with her mind. 
+                
+                Hey, remember learning that Pixies song? "Where Is My Mind." She gets hung up on that line all the time, actually, "with your feet on the air and your head on the ground..." Man, you'd dig her.
+               
+                Crying again, you bastard. You're not allowed to make me cry, you know. Gotta go grab smokes so I can "fag it up" and stop crying. Be right back.
+                Okay, I'm back.
+                
+                Lost my train of thought though.
+                Learned this trick in a writing class I snuck into a couple times at the college. Remember me doing that since high school? Love learning, hate school. Haha. Anyway, the trick is simple: just move on. Let the thought end and start a new one.
+                So...
+                
+                
+                 I was talking just today about back home and somehow the stupid clam statues got brought up and fuck me if I didn't talk about your clam chowder for forty-five minutes straight. Then of course I had to bring up the crepes LMAO ahh to be sixteen again.
+                
+                 That fucking ball slap on the thigh. Still pops into my head. Haha, I'm dying right now... bad choice of words. You'd laugh at that, I know it. still i'll go to hell for it
+               You know I turned out to be quite the gambler, so "Ace of Spades" that one worked out, That song will always mean something totally different now. Shitty drunk walks down Ash, to Elm, up to Grand, and all we could yell was "the Ace of spades, the Ace of spades." Too wasted to remember the rest. Jack in the Box to the rescue.
+                Some of my best memories are with you, man, and it rips me apart that there won't be any new ones. Loved just smoking weed and cruising through Price Canyon and Halcyon. All those back roads. Remember that dude with the shovel? Haha, sketch town. That guy definitely buried a body.
+                We had so much damn fun, dude. Seriously the best times. Up at Rocky's house (love you, Rocky, miss you too). Oh man, she's probably driving you nuts by now. Mike, you okay? Need anything? Hungry? Mike? Haha, that's awesome. She's never gonna leave you alone now, bro. She's in heaven in your hell. Haha, nah, you loved it.
+                Remember when I slept with... won't say her name here... in Rocky's living room? How pissed you got? That was so funny. You were so mad but still forgave me somehow.
+                I was a real piece of crap sometimes. From when we first met, letting your grandma's dogs loose and blaming my brother because they "wanted to be free," all the way up to a few months ago. You were trying to vent, and I pretty much told you to shut up, that we all have problems. Probably made you feel like your stuff wasn't important. Sorry about that. My problems are pretty small, really. Forty-year-old white guy in America kind of problems, you know?
+               Look at me now though right? Livin in my car, no job, no money, fucking killing it. 
+               Now what am I supposed to do far a best friend? 
+               What about us beieng the grumpy old men guys? you forget we were supposed to do that? 
+               we were supposed to be the old guys in the diner, 
+               sitting at the counter, 
+               drinking coffee and talking about how stupid the kids are these days. 
+               the two old dudes who just sit there and talk shit about how stupid the world is.
+               Pranking each other. 
+               i cant fucking do that by myself. 
+               im fucking sorry bto.
+               ugfotydrorytypibouinbv6
+               ou99y7o68t087t-9
+                ugfytfutfbvdtbuiniyfboutfyfjgvjhbhjlkoi;;pokil]p 
+               fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuck. fuckfuckfuckfuck
+                The fuck. fuckin fuck dude?
+                only fags die mike.
+                FUCK!
+                
+                I always was a sensitive little bitch. bro im Sorry, Im sorry, please, im sorry. 
+                Sorry I wasnt there when you neede me, like you always were for me. 
+
+
+                Well, feels like I'm done. Too many tears to sound even halfway normal. Honestly, don't really give fuck if anyone even clicks this anymore, my wounds no longer need witnessed. 
+                
+                
+                I'm gonna have to post this as an HTML through my server on GitHub. It's far too long for Facebook and I'm pretty sure I said fag, I dont know though. fag. 
+                Relax Facebook I didn't mean in a cool homo-sexual kind of way where two grown men have an aggressive and extremely physical and rough yet totally consensual butt pounding sex session. I meant it in like a nineties kid kinda way . LMAO Mike loved when I'd do that to people. Haha. I miss you dude. So fucking hard. Thats kinda faggy too. 
+
+                You never even got to look at the website I built. I taught myself code dude. Like really crazy coding skills computer nerd kinda shit. Like I'm not even sure how i learned it or what I do in the development environment I use. pretty sure i was reprogrammed by AI or something, I just go into a matrix and my eyes glaze over like a sharks. Like all dead looking and shit and I just start going. clickity clack, clack clickity.
+                 I'm making a game now. To give utility to my NFT collection.
+                 
+                 LMAO my bad my God complex is showing. I know im not smarter than everyone dont worry, just most of everyone lol i joke.
+                 
+                 I gotta go . Love you. Miss you. Sorry. 
+                
+                Last thing. Remember fake fighting at 1 AM walking back from Pismo? I fake kicked the shit outta you.
+                Fuck, bro.
+                 Fuck
+                Fuck.
+                </pre>
+        </article>
+        <section class="visitor-comments">
+            <h2>Have you Herd</h2>
+            <textarea class="comment-textarea" placeholder="Tell your favorite Herd Story"></textarea>
+            <button class="submit-comment">Bird is the word</button>
+            <div class="comments-section">
+                <!-- Comments will be dynamically added here -->
+            </div>
+            <script>
+                document.querySelector('.submit-comment').addEventListener('click', function() {
+                    const textarea = document.querySelector('.comment-textarea');
+                    const commentText = textarea.value.trim();
+                    
+                    if (commentText) {
+                        const commentPreview = document.createElement('div');
+                        commentPreview.className = 'comment-preview';
+                        commentPreview.innerHTML = `
+                            <p>${commentText.substring(0, 100)}...</p>
+                            <button class="view-full-comment">View Full Story</button>
+                        `;
+
+                        const fullCommentModal = document.createElement('div');
+                        fullCommentModal.className = 'full-comment-modal';
+                        fullCommentModal.innerHTML = `
+                            <div class="modal-content">
+                                <button class="close-modal">&times;</button>
+                                <div contenteditable="true" class="full-comment-text">${commentText}</div>
+                            </div>
+                        `;
+                        fullCommentModal.style.display = 'none';
+
+                        commentPreview.querySelector('.view-full-comment').addEventListener('click', function() {
+                            fullCommentModal.style.display = 'block';
+                        });
+
+                        fullCommentModal.querySelector('.close-modal').addEventListener('click', function() {
+                            fullCommentModal.style.display = 'none';
+                        });
+
+                        document.querySelector('.comments-section').appendChild(commentPreview);
+                        document.body.appendChild(fullCommentModal);
+
+                        textarea.value = ''; // Clear the textarea
+                    } else {
+                        alert('Please write a comment before submitting.');
+                    }
+                });
+
+                // Carousel functionality
+                const images = document.querySelectorAll('.carousel-images img');
+                let current = 0;
+                function showImage(idx) {
+                    images.forEach((img, i) => {
+                        img.classList.toggle('active', i === idx);
+                    });
+                }
+                document.querySelector('.carousel-btn.left').onclick = function() {
+                    current = (current - 1 + images.length) % images.length;
+                    showImage(current);
+                };
+                document.querySelector('.carousel-btn.right').onclick = function() {
+                    current = (current + 1) % images.length;
+                    showImage(current);
+                };
+                showImage(current);
+
+                // Lightbox functionality for .image-row images
+                document.querySelectorAll('.image-row img').forEach(img => {
+                    img.style.cursor = 'pointer';
+                    img.addEventListener('click', function() {
+                        document.getElementById('lightboxImg').src = this.src;
+                        document.getElementById('lightboxModal').style.display = 'flex';
+                    });
+                });
+                document.getElementById('closeLightbox').onclick = function() {
+                    document.getElementById('lightboxModal').style.display = 'none';
+                    document.getElementById('lightboxImg').src = '';
+                };
+                // Optional: close modal when clicking outside the image
+                document.getElementById('lightboxModal').addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.style.display = 'none';
+                        document.getElementById('lightboxImg').src = '';
+                    }
+                });
+            </script>
+            <style>
+                .comment-preview {
+                    border: 1px solid #FF0080;
+                    padding: 10px;
+                    margin: 10px 0;
+                    background-color: #000000;
+                }
+                .full-comment-modal {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.8);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .modal-content {
+                    background: #000;
+                    padding: 20px;
+                    border-radius: 5px;
+                    width: 80%;
+                    max-width: 600px;
+                    position: relative;
+                }
+                .close-modal {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    background: none;
+                    border: none;
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+                .full-comment-text {
+                    border: 1px solid #FF0080;
+                    padding: 10px;
+                    min-height: 200px;
+                    outline: none;
+                    color: #00FF00;
+                    background-color: #000;
+                    font-family: 'VCR OSD Mono', monospace;
+                    font-size: 16px;
+                }
+                .full-comment-text:focus {
+                    border-color: #FF0080;
+                }
+            </style>
+        </section>
+    </div>
+    <script>
+        window.onload = function() {
+            alert("!!!WARNING!!!!: This page contains sensitive content along with some adult language, so if you are kind of a little bitch maybe just leave..");
+        };
+    </script>
+</body>
+</html>

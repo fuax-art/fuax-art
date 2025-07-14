@@ -1,0 +1,72 @@
+ <!-- Easter Egg Modal -->
+    <div id="easterModal" class="modal">
+        <div class="modal-content easter-modal">
+            <button class="modal-close" onclick="closeModal('easterModal')">&times;</button>
+            <h2>🎉 You Found It! 🎉</h2>
+            <div class="video-placeholder">
+                <p>Limited Release Teaser Video<br>Coming Soon...</p>
+            </div>
+            <p style="color: var(--electric-teal); margin-bottom: 2rem;">
+                Congratulations on discovering this hidden gem! As a reward for your curiosity, 
+                you'll receive a free NFT from our upcoming limited collection.
+            </p>
+            <p style="color: var(--steel); font-size: 0.9rem;">
+                Stay tuned for more details about the release and your exclusive NFT reward.
+            </p>
+        </div>
+    </div>
+
+
+      // Easter egg functionality
+        let clickCount = 0;
+        document.getElementById('easterEgg').addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 1) {
+                // First click - make it more obvious
+                this.style.background = 'var(--warning-orange)';
+                this.style.transform = 'scale(1.5)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 300);
+            } else if (clickCount >= 3) {
+                // Third click - open the modal
+                openModal('easterModal');
+                // Reset for next time
+                clickCount = 0;
+                this.style.background = 'var(--rust-red)';
+            }
+        });
+
+           // Enhanced Easter egg with machine startup sound
+        // (clickCount already declared above)
+        document.getElementById('easterEgg').addEventListener('click', async function() {
+            await initializeSounds();
+            clickCount++;
+            if (clickCount === 1) {
+                // First click - metallic click
+                soundEngine.playMetallicClick();
+                this.style.background = 'var(--warning-orange)';
+                this.style.transform = 'scale(1.5)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 300);
+            } else if (clickCount >= 3) {
+                // Third click - machine startup + modal
+                soundEngine.playMachineStartup();
+                setTimeout(() => {
+                    openModal('easterModal');
+                }, 600); // Delay to sync with sound
+                clickCount = 0;
+                this.style.background = 'var(--rust-red)';
+            } else {
+                // Second click - electric buzz
+                soundEngine.playElectricBuzz();
+            }
+        });
+
+            // Add glitch effect to Easter egg on hover
+        document.getElementById('easterEgg').addEventListener('mouseenter', function() {
+            if (Math.random() < 0.3) { // 30% chance of glitch
+                glitchEffect(this);
+            }
+        });
