@@ -386,6 +386,13 @@ body {
   color: var(--oil-black);
 }
 
+.highlight {
+  background: var(--oil-black, #1C1C1C); /* or any color you want */
+  color: var(--electric-teal, #00FFFF); /* optional: change text color for contrast */
+  padding: 0.1em 0.3em; /* optional: add some padding */
+  border-radius: 0.2em; /* optional: rounded corners */
+}
+
 /* Contact Form */
 .form-group {
   margin-bottom: 1.5rem;
@@ -622,7 +629,47 @@ body {
   border: none;
   color: #fff;
   font-size: 2rem;
+  cursor: crosshair;
+}
+
+.chaos-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(20, 20, 30, 0.92) url("/assets/images/overlay.png") center center/cover no-repeat;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "VCR OSD Mono", monospace;
+  font-size: 1.3rem;
+  color: var(--electric-teal);
+  text-align: center;
+  padding: 2rem;
+}
+
+.chaos-warning {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.chaos-proceed-btn {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background: var(--rust-red, #8B2635);
+  color: var(--electric-teal);
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chaos-proceed-btn:hover {
+  background: var(--warning-orange, #CC4125);
 }
 
 @media (max-width: 768px) {

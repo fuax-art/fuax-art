@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Canvas - Digital Drawing App</title>
+    <link rel="stylesheet" href="../styles/draw.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="toolbar">
+            <div class="app-title">URBAN CANVAS</div>
+            
+            <div class="tool-section">
+                <div class="section-title">Industrial Brushes</div>
+                <div class="brush-grid">
+                    <div class="brush-btn active" data-brush="concrete">CONCRETE</div>
+                    <div class="brush-btn" data-brush="metal">METAL</div>
+                    <div class="brush-btn" data-brush="spray">SPRAY</div>
+                    <div class="brush-btn" data-brush="rust">RUST</div>
+                    <div class="brush-btn" data-brush="neon">NEON</div>
+                    <div class="brush-btn" data-brush="wire">WIRE</div>
+                    <div class="brush-btn" data-brush="smoke">SMOKE</div>
+                    <div class="brush-btn" data-brush="glass">GLASS</div>
+                    <div class="brush-btn" data-brush="carbon">CARBON</div>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <div class="section-title">Color Palette</div>
+                <div class="color-picker">
+                    <input type="color" class="color-input" id="colorPicker" value="#e74c3c">
+                    <div class="color-presets">
+                        <div class="color-preset" style="background: #e74c3c" data-color="#e74c3c"></div>
+                        <div class="color-preset" style="background: #f39c12" data-color="#f39c12"></div>
+                        <div class="color-preset" style="background: #2ecc71" data-color="#2ecc71"></div>
+                        <div class="color-preset" style="background: #3498db" data-color="#3498db"></div>
+                        <div class="color-preset" style="background: #9b59b6" data-color="#9b59b6"></div>
+                        <div class="color-preset" style="background: #34495e" data-color="#34495e"></div>
+                        <div class="color-preset" style="background: #95a5a6" data-color="#95a5a6"></div>
+                        <div class="color-preset" style="background: #000000" data-color="#000000"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <div class="section-title">Brush Settings</div>
+                <div class="slider-container">
+                    <label class="slider-label">Size: <span id="sizeValue">15</span>px</label>
+                    <input type="range" class="slider" id="brushSize" min="1" max="50" value="15">
+                </div>
+                <div class="slider-container">
+                    <label class="slider-label">Opacity: <span id="opacityValue">100</span>%</label>
+                    <input type="range" class="slider" id="brushOpacity" min="10" max="100" value="100">
+                </div>
+                <div class="slider-container">
+                    <label class="slider-label">Texture: <span id="textureValue">50</span>%</label>
+                    <input type="range" class="slider" id="brushTexture" min="0" max="100" value="50">
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <div class="section-title">Actions</div>
+                <div class="action-buttons">
+                    <button class="action-btn" id="clearCanvas">CLEAR</button>
+                    <button class="action-btn" id="undoAction">UNDO</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas class="canvas" id="drawingCanvas" width="800" height="600"></canvas>
+            <canvas class="grid-overlay" id="gridCanvas" width="800" height="600"></canvas>
+            
+            <div class="layer-panel">
+                <div class="section-title">Layers</div>
+                <div class="layer-item active">Background</div>
+                <div class="layer-item">Sketch</div>
+                <div class="layer-item">Details</div>
+                <div class="action-buttons">
+                    <button class="action-btn">NEW</button>
+                    <button class="action-btn">DELETE</button>
+                </div>
+            </div>
+
+            <div class="brush-preview">
+                <div class="section-title">Preview</div>
+                <canvas class="preview-canvas" id="previewCanvas" width="118" height="80"></canvas>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <span>Brush: <span id="currentBrush">CONCRETE</span></span>
+            <span style="margin-left: 20px;">Size: <span id="statusSize">15</span>px</span>
+            <span style="margin-left: 20px;">Coords: <span id="coordinates">0, 0</span></span>
+        </div>
+    </div>
+
+   <script src="draw.js"></script>
+</body>
+</html>

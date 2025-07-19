@@ -6,6 +6,7 @@
     <title>Faux Fox Foundry</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
@@ -20,7 +21,7 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-           
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -30,7 +31,7 @@
             <p class="subtitle">Digital • Traditional • Experimental</p>
             <p class="description">
                 Crafting visual experiences through the lens of industrial aesthetics. 
-                Where concrete meets creativity, where steel meets soul.
+                Where concrete meets creativity, where steel meets soul and there is beauty in the decay.
             </p>
             <a href="#portfolio" class="cta-button">View Work</a>
         </div>
@@ -49,8 +50,8 @@
                 <p>Mixed media pieces incorporating Classic styles of Patrick Nagel mixed with my own 80's baby neon grit.</p>
             </div>
             <div class="portfolio-item" onclick="openPortfolioModal()">
-                <h3>Experimental Series</h3>
-                <p>Pushing boundaries with unconventional techniques.</p>
+                <h3>Me myself and ai</h3>
+                <p>AI is sick. Im telling you i just asked for rainbows and lollipops AI had other plans. It reprogrammed me and now im totally cray.</p>
             </div>
         </div>
     </section>
@@ -63,32 +64,32 @@
                 <div class="date">June 10, 2025</div>
                 <h3>The Aesthetics of Decay</h3>
                 <p>Exploring how industrial decay becomes a form of unintentional art, and how we can harness these principles in our creative work...</p>
-                 <a href="blog_decay.html" class="cta-button">Wait, What?</a>
+                 <a href="blogfog/blog_decay.html" class="cta-button">Wait, What?</a>
             </article>
             <article class="blog-post">
                 <div class="date">June 5, 2025</div>
                 <h3>Digital Tools, Analog Soul</h3>
                 <p>Balancing the precision of digital creation with the unpredictability and soul of traditional mediums...</p>
-                 <a href="blog_imperfect.html" class="cta-button">Did You Hear that?</a>
+                 <a href="blogfog/blog_imperfect.html" class="cta-button">Did You Hear that?</a>
             </article>
              <article class="blog-post">
                 <div class="date">June 1, 2025</div>
                 <h3>Monsters in the Mirror</h3>
                 <p>The Monster and the Canvas: A Soliloquy in Smoke
                    The mirror shows a stranger, haunted by a past he barely recognizes.</p>
-                 <a href="blog_monster.html" class="cta-button">Creepin?</a>
+                 <a href="blogfog/blog_monster.html" class="cta-button">Creepin?</a>
             </article>
             <article class="blog-post">
                 <div class="date">May 28, 2025</div>
                 <h3>Concrete Poetry</h3>
                 <p>How the brutalist architecture movement influences contemporary digital art and design principles...</p>
-                <a href="blog_concreton.html" class="cta-button">Lick this... I meant Click</a>
+                <a href="blogfog/blog_concreton.html" class="cta-button">Lick this... I meant Click</a>
             </article>
              <article class="blog-post">
                 <div class="date">April 17, 2025</div>
                 <h3>Anything but the Herd mentality</h3>
                 <p>I lost my best friend. still had some shit to talk though.</p>
-                <a href="blog_concreton.html" class="cta-button">Don't Click this button</a>
+                <a href="blogfog/blog_Herd.html" class="cta-button">Don't Click this button</a>
             </article>
         </div>
     </section>
@@ -100,12 +101,27 @@
             <div class="app-card">
                 <h3>Drawing Application</h3>
                 <p>A sophisticated digital drawing tool with industrial-inspired brushes and textures. Create artwork with tools designed for the modern digital artist.</p>
-                <a href="#" class="app-launch">Launch Drawing App</a>
+                <a href="draw/draw.html" class="app-launch">Launch Drawing App</a>
             </div>
             <div class="app-card">
-                <h3>Particle Playground</h3>
+                <h3>Paradigm of Peculiar Particles</h3>
                 <p>Experiment with particle systems and physics simulations. Generate abstract compositions using industrial-themed particle behaviors.</p>
-                <a href="#" class="app-launch">Launch Particle App</a>
+                <a href="https://fuax-art.github.io/particle1/" class="app-launch">Launch Particle App</a>
+            </div>
+            <div class="app-card">
+                <h3>Other things I do</h3>
+                  <div class="container">
+        <ul class="feature-icons">
+          <li class="icon solid fa-code">Write some code</li>
+          <li class="icon solid fa-cubes">Stack small boxes</li>
+          <li class="icon solid fa-book">Read books and stuff</li>
+          <li class="icon solid fa-coffee">Drink much coffee</li>
+          <li class="icon solid fa-bolt">Go Fast</li>
+          <li class="icon solid fa-users">Shadow clone technique</li>
+          <li class="icon solid fa-user-astronaut">Space Guy shit</li>
+          <li class="icon solid fa-hand-middle-finger">Give Zero</li>
+        </ul>
+      </div>
             </div>
         </div>
     </section>
@@ -114,7 +130,7 @@
     <section id="contact" class="section">
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-container">
-            <form class="contact-form">
+            <form class="contact-form" action="https://formspree.io/f/xqalkdye" method="POST">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -197,13 +213,13 @@
     </div>
 
     <div id="chaos-overlay" class="chaos-overlay">
-  <div>
-    <span class="chaos-warning">⚠️</span><br>
-    Beware: You are now entering the chaos
-  </div>
-  <button id="chaos-proceed" class="chaos-proceed-btn">Proceed</button>
-</div>
+      <div>
+        <span class="chaos-warning">⚠️</span><br>
+         <span class="highlight">You are about to enter the creative realm of a chaos artist - a space where raw authenticity collides with unfiltered expression. This is not polished corporate art or sanitized creativity. Here you'll encounter work born from struggle, survival, and the beautiful mess of a mind that refuses to conform. Expect the unexpected. Embrace the uncomfortable. I create from the edges of experience - where homelessness meets hope, where bipolar energy fuels breakthrough, where scattered focus becomes multidisciplinary mastery. Direct without apology, I am not trying to make you comfortable. If you're looking for safe, predictable, or conventional - turn back now, but if you're ready to witness the depths of human experience and chaos as something meaningful, then step forward. Just don't say you weren't warned. This is creation without compromise. Enter at your own risk. Side note I also make shit just because it looks cool.</span>
+      </div>
+      <button id="chaos-proceed" class="chaos-proceed-btn">Proceed</button>
+    </div>
 
-<script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
