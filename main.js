@@ -15,13 +15,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // --- Modal functions ---
 function openModal(modalId) {
     document.getElementById(modalId).classList.add('active');
-    document.body.style.overflow = 'hidden';
+   document.getElementById(modalId).style.display = 'block';
     if (soundsEnabled) soundEngine.playHydraulicHiss();
 }
 
 function closeModal(modalId) {
     document.getElementById(modalId).classList.remove('active');
-    document.body.style.overflow = 'auto';
+    document.getElementById(modalId).style.display = 'none';
     if (soundsEnabled) soundEngine.playConcreteScrape();
 }
 
@@ -309,6 +309,14 @@ document.querySelectorAll('.nav-menu a, .portfolio-item').forEach(element => {
         }
     });
 });
+document.querySelectorAll('.cta-button, .app-launch').forEach(element => {
+    element.addEventListener('mouseenter', async function() {
+        await initializeSounds();
+        if (Math.random() < 0.7) {
+            soundEngine.playMachineStartup();
+        }
+    });
+});
 
 // --- Sound control toggle ---
 function createSoundToggle() {
@@ -397,7 +405,7 @@ window.addEventListener('load', function() {
 });
 
 // --- Typewriter effect for hero subtitle with sound ---
-function typeWriter(element, text, speed = 100) {
+function typeWriter(element, text, speed = 50) {
     let i = 0;
     element.innerHTML = '';
     function type() {

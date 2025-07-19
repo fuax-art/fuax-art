@@ -41,15 +41,15 @@
     <section id="portfolio" class="section">
         <h2 class="section-title">Portfolio</h2>
         <div class="portfolio-grid">
-            <div class="portfolio-item" onclick="openPortfolioModal()">
+            <div class="portfolio-item" onclick="openModal('portfolioModal1')">
                 <h3>Digital Compositions</h3>
                 <p>A collection of digital artworks exploring industrial themes and urban decay aesthetics.</p>
             </div>
-            <div class="portfolio-item" onclick="openPortfolioModal()">
+            <div class="portfolio-item" onclick="openModal('portfolioModal2')">
                 <h3>Traditional Works</h3>
                 <p>Mixed media pieces incorporating Classic styles of Patrick Nagel mixed with my own 80's baby neon grit.</p>
             </div>
-            <div class="portfolio-item" onclick="openPortfolioModal()">
+            <div class="portfolio-item" onclick="openModal('portfolioModal3')">
                 <h3>Me myself and ai</h3>
                 <p>AI is sick. Im telling you i just asked for rainbows and lollipops AI had other plans. It reprogrammed me and now im totally cray.</p>
             </div>
@@ -174,41 +174,35 @@
         </div>
     </footer>
 
-    <!-- Portfolio Modal -->
-    <div id="portfolioModal" class="modal">
+    <!-- Portfolio Modals -->
+    <div id="portfolioModal1" class="modal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('portfolioModal')">&times;</button>
-            <h2>Portfolio Gallery</h2>
-            <div class="portfolio-slider">
-                <div class="portfolio-slide">
-                    <h4>Artwork Title 1</h4>
-                    <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
-                        [Image Placeholder]
-                    </div>
-                    <p>Description of the artwork and techniques used.</p>
-                </div>
-                <div class="portfolio-slide">
-                    <h4>Artwork Title 2</h4>
-                    <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
-                        [Image Placeholder]
-                    </div>
-                    <p>Description of the artwork and techniques used.</p>
-                </div>
-                <div class="portfolio-slide">
-                    <h4>Artwork Title 3</h4>
-                    <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
-                        [Image Placeholder]
-                    </div>
-                    <p>Description of the artwork and techniques used.</p>
-                </div>
-                <div class="portfolio-slide">
-                    <h4>Artwork Title 4</h4>
-                    <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
-                        [Image Placeholder]
-                    </div>
-                    <p>Description of the artwork and techniques used.</p>
-                </div>
+            <button class="modal-close" onclick="closeModal('portfolioModal1')">&times;</button>
+            <h2>Digital Compositions</h2>
+            <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
+                [Image Placeholder]
             </div>
+            <p>Description of the artwork and techniques used.</p>
+        </div>
+    </div>
+    <div id="portfolioModal2" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('portfolioModal2')">&times;</button>
+            <h2>Traditional Works</h2>
+            <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
+                [Image Placeholder]
+            </div>
+            <p>Description of the artwork and techniques used.</p>
+        </div>
+    </div>
+    <div id="portfolioModal3" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('portfolioModal3')">&times;</button>
+            <h2>Me myself and ai</h2>
+            <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
+                [Image Placeholder]
+            </div>
+            <p>Description of the artwork and techniques used.</p>
         </div>
     </div>
 
