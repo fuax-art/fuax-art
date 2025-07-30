@@ -491,3 +491,13 @@ window.addEventListener('DOMContentLoaded', () => {
         clickCount = 0;
     }
 });
+
+// --- About section curtain ---
+document.getElementById('about-trigger').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('about-curtain').classList.add('active');
+});
+
+document.getElementById('about-close').addEventListener('click', function() {
+    document.getElementById('about-curtain').classList.remove('active');
+});

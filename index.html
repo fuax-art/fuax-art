@@ -16,6 +16,7 @@
             <nav>
                 <ul class="nav-menu">
                     <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about" id="about-trigger">About</a></li>
                     <li><a href="#blog">Blog</a></li>
                     <li><a href="#apps">Apps</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -41,18 +42,18 @@
     <section id="portfolio" class="section">
         <h2 class="section-title">Portfolio</h2>
         <div class="portfolio-grid">
-            <div class="portfolio-item" onclick="openModal('portfolioModal1')">
+            <a href="portfoliopage.html?section=digital" class="portfolio-item">
                 <h3>Digital Compositions</h3>
                 <p>A collection of digital artworks exploring industrial themes and urban decay aesthetics.</p>
-            </div>
-            <div class="portfolio-item" onclick="openModal('portfolioModal2')">
+            </a>
+            <a href="portfoliopage.html?section=traditional" class="portfolio-item">
                 <h3>Traditional Works</h3>
                 <p>Mixed media pieces incorporating Classic styles of Patrick Nagel mixed with my own 80's baby neon grit.</p>
-            </div>
-            <div class="portfolio-item" onclick="openModal('portfolioModal3')">
+            </a>
+            <a href="portfoliopage.html?section=ai" class="portfolio-item">
                 <h3>Me myself and ai</h3>
                 <p>AI is sick. Im telling you i just asked for rainbows and lollipops AI had other plans. It reprogrammed me and now im totally cray.</p>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -87,7 +88,7 @@
             </article>
              <article class="blog-post">
                 <div class="date">April 17, 2025</div>
-                <h3>Anything but the Herd mentality</h3>
+                <h3>Anything
                 <p>I lost my best friend. still had some shit to talk though.</p>
                 <a href="blogfog/blog_Herd.html" class="cta-button">Don't Click this button</a>
             </article>
@@ -97,7 +98,7 @@
     <!-- Web Apps Section -->
     <section id="apps" class="section">
         <h2 class="section-title">Interactive Applications</h2>
-        <div class="apps-grid">
+caa        <div class="apps-grid">
             <div class="app-card">
                 <h3>Drawing Application</h3>
                 <p>A sophisticated digital drawing tool with industrial-inspired brushes and textures. Create artwork with tools designed for the modern digital artist.</p>
@@ -174,42 +175,35 @@
         </div>
     </footer>
 
-    <!-- Portfolio Modals -->
-    <div id="portfolioModal1" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('portfolioModal1')">&times;</button>
-            <h2>Digital Compositions</h2>
-            <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
-                [Image Placeholder]
+    <!-- About Me Curtain Modal -->
+<div id="about-curtain" class="about-curtain">
+    <div class="about-curtain-content">
+        <button class="about-close" id="about-close">&times;</button>
+        <div class="about-content">
+            <h2>About Me</h2>
+            <div class="about-text">
+                 Forever unfinished Artworx is a dynamic and forward-thinking art enterprise that combines creativity and soul with indusry and technology.<br>
+          Our objective, led by Remington Braninburg, a passionate artist and entrepreneur, is to create exclusive, high-quality work that excites and captivates audiences.<br>
+          We sell exceptional original art prints, t-shirts, stickers, and other imaginative undertakings online demonstrating our distinct style.<br>
+          Our art reflects our passion for urban street art and graffiti, as well as our roots in the 80s & 90s scene, and we are steadfast in pushing the limits of what is possible.<br>
+          Hand-painted modern contemporary and digital abstraction bring cyberpunk futures into your world.<br>
+          <br>
+          &Dagger; A paradigm Shifting polymath. Stationary Timewalker. Scientific magic wielder. A perfect imperfection. &Dagger;<br>
+          Bi-Polar and ADD is my super power. Just a question of which one of me is for the hour? Father, Fighter, Artist, Poet, Convict, Addict? Whiskey neat or a whiskey sour?
             </div>
-            <p>Description of the artwork and techniques used.</p>
         </div>
     </div>
-    <div id="portfolioModal2" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('portfolioModal2')">&times;</button>
-            <h2>Traditional Works</h2>
-            <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
-                [Image Placeholder]
-            </div>
-            <p>Description of the artwork and techniques used.</p>
-        </div>
-    </div>
-    <div id="portfolioModal3" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('portfolioModal3')">&times;</button>
-            <h2>Me myself and ai</h2>
-            <div style="height: 200px; background: rgba(47, 79, 79, 0.5); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--steel);">
-                [Image Placeholder]
-            </div>
-            <p>Description of the artwork and techniques used.</p>
-        </div>
-    </div>
+</div>
 
     <div id="chaos-overlay" class="chaos-overlay">
-      <div>
-        <span class="chaos-warning">⚠️</span><br>
-         <span class="highlight">You are about to enter the creative realm of a chaos artist - a space where raw authenticity collides with unfiltered expression. This is not polished corporate art or sanitized creativity. Here you'll encounter work born from struggle, survival, and the beautiful mess of a mind that refuses to conform. Expect the unexpected. Embrace the uncomfortable. I create from the edges of experience - where homelessness meets hope, where bipolar energy fuels breakthrough, where scattered focus becomes multidisciplinary mastery. Direct without apology, I am not trying to make you comfortable. If you're looking for safe, predictable, or conventional - turn back now, but if you're ready to witness the depths of human experience and chaos as something meaningful, then step forward. Just don't say you weren't warned. This is creation without compromise. Enter at your own risk. Side note I also make shit just because it looks cool.</span>
+      <div class="chaos-video-container">
+        <video src="assets/videos/chaos.mp4" autoplay loop muted playsinline class="chaos-video"></video>
+        <div class="chaos-overlay-text">
+          <span class="chaos-warning">⚠️</span><br>
+          <span class="highlight">
+            You are about to enter the creative realm of a chaos artist - a space where raw authenticity collides with unfiltered expression. This is not polished corporate art or sanitized creativity. Here you'll encounter work born from struggle, survival, and the beautiful mess of a mind that refuses to conform. Expect the unexpected. Embrace the uncomfortable. I create from the edges of experience - where homelessness meets hope, where bipolar energy fuels breakthrough, where scattered focus becomes multidisciplinary mastery. Direct without apology, I am not trying to make you comfortable. If you're looking for safe, predictable, or conventional - turn back now, but if you're ready to witness the depths of human experience and chaos as something meaningful, then step forward. Just don't say you weren't warned. This is creation without compromise. Enter at your own risk. Side note I also make shit just because it looks cool.
+          </span>
+        </div>
       </div>
       <button id="chaos-proceed" class="chaos-proceed-btn">Proceed</button>
     </div>
