@@ -713,6 +713,28 @@ body {
   cursor: crosshair;
 }
 
+.chaos-video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.chaos-video {
+  max-width: 480px;
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+.chaos-overlay-text {
+  text-align: center;
+  color: var(--electric-teal);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
 @media (max-width: 768px) {
   .nav-menu {
     display: none;
@@ -851,6 +873,57 @@ pre {
 
 .full-comment-text:focus {
   border-color: #FF0080;
+}
+
+.chaos-video-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.chaos-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background: var(--rust-red, #8B2635);
+  color: var(--electric-teal, #00FFFF);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  opacity: 0.6;
+  transition: background 0.2s, opacity 0.2s;
+}
+.chaos-play-btn:hover {
+  background: var(--warning-orange, #CC4125);
+  opacity: 1;
+}
+
+.chaos-proceed-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 10;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background: var(--steel-blue, #2A3A4D);
+  color: var(--chrome, #F4F4F4);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s;
+}
+.chaos-proceed-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /*# sourceMappingURL=main.css.map */

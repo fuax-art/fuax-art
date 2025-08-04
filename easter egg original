@@ -1,20 +1,4 @@
- <!-- Easter Egg Modal -->
-    <div id="easterModal" class="modal">
-        <div class="modal-content easter-modal">
-            <button class="modal-close" onclick="closeModal('easterModal')">&times;</button>
-            <h2>🎉 You Found It! 🎉</h2>
-            <div class="video-placeholder">
-                <p>Limited Release Teaser Video<br>Coming Soon...</p>
-            </div>
-            <p style="color: var(--electric-teal); margin-bottom: 2rem;">
-                Congratulations on discovering this hidden gem! As a reward for your curiosity, 
-                you'll receive a free NFT from our upcoming limited collection.
-            </p>
-            <p style="color: var(--steel); font-size: 0.9rem;">
-                Stay tuned for more details about the release and your exclusive NFT reward.
-            </p>
-        </div>
-    </div>
+// Easter Egg Modal HTML should be placed in your HTML file, not in this TypeScript file.
 
 
       // Easter egg functionality

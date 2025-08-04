@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Creepy Camper</title>
+  <link href="https://fonts.googleapis.com/css2?family=VCR+OSD+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="blog-body">
+  <div class="container">
+    <article class="blog-post">
+      <h1 class="blog-post-title">Creepy Camper</h1>
+      <pre>
+        <!-- blog-post -->
+         Content too Cruise like Tom on Curling Combers.
+      Carried on Caffeine & Cannabinoids.
+                 Cocaine and I’m Crazed.
+       Certifiably Crazy Insane, So myself I must Contain. 
+       Already seen as a cracked cuckoo hatter a crispy cracker, one flew over the nest. 
+                   Maybe just a crackhead at best.
+         But I carry on. A wayward Son.  
+         Cool as a Cucumber. Calm, Collected, Composed. C-Quatro. 
+         You are not though Quattro C they call me.
+      Calm as a Chameleon Hiding my Candid characteristics behind cigarette Smoke Screens, cortina or Curtain that is to be certain.
+Conducted Comas that contort the Chords & convert the chorus. So I must concede & concur.
+
+Continuous change and confuse the  cerebral celebrate conservative conventional close-
+Mindedness.
+
+So collected thought I Confirmed ‽ ‽
+Chase cash while our Captains coordinate behind chainmail curtains.
+
+Cum Commercio Civitas. SO civilization forgets to be civil. Chasing Cash.
+And we conceal cerebral consciousness in cold concrete chambers. Waiting our turn to converse with a cutthroat cyclops seeking castration. And while we contemplate contemporary curriculums we can be curtain,
+              No Culpa.
+Just our Course. No contrast.
+I have a concept for those which I convey but I covenanted or consented to my creator,
+my Mother.
+That I wouldn't say 
+               cunt.
+  </pre>
+    </article>
+    <section class="visitor-comments">
+      <h2>Slow Burn</h2>
+      <textarea class="comment-textarea" placeholder="Speak Truth"></textarea>
+      <button class="submit-comment">Fire Away</button>
+      <div class="comments-section">
+        <!-- Comments will be dynamically added here -->
+      </div>
+      <script>
+        document.querySelector('.submit-comment').addEventListener('click', function() {
+          const textarea = document.querySelector('.comment-textarea');
+          const commentText = textarea.value.trim();
+
+          if (commentText) {
+            const commentPreview = document.createElement('div');
+            commentPreview.className = 'comment-preview';
+            commentPreview.innerHTML = `
+              <p>${commentText.substring(0, 100)}...</p>
+              <button class="view-full-comment">View Full Story</button>
+            `;
+
+            const fullCommentModal = document.createElement('div');
+            fullCommentModal.className = 'full-comment-modal';
+            fullCommentModal.innerHTML = `
+              <div class="modal-content">
+                <button class="close-modal">&times;</button>
+                <div contenteditable="true" class="full-comment-text">${commentText}</div>
+              </div>
+            `;
+            fullCommentModal.style.display = 'none';
+
+            commentPreview.querySelector('.view-full-comment').addEventListener('click', function() {
+              fullCommentModal.style.display = 'flex';
+            });
+
+            fullCommentModal.querySelector('.close-modal').addEventListener('click', function() {
+              fullCommentModal.style.display = 'none';
+            });
+
+            document.querySelector('.comments-section').appendChild(commentPreview);
+            document.body.appendChild(fullCommentModal);
+
+            textarea.value = '';
+          } else {
+            alert('Please write a comment before submitting.');
+          }
+        });
+      </script>
+    </section>
+  </div>
+  <script>
+    window.onload = function() {
+      alert("!!!WARNING!!!!: This page contains sensitive content along with some adult language, so if you are kind of a little bitch maybe just leave..");
+    };
+  </script>
+</body>
+</html>

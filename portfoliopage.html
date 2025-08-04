@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artist Portfolio - Masonry Gallery</title>
+    <title>Art From my Chaos</title>
     <style>
         * {
             margin: 0;
@@ -12,9 +12,9 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: "VCR OSD Mono", monospace;
             background: #111;
-            color: #fff;
+            color: #09eed7;
             line-height: 1.6;
         }
 
@@ -32,7 +32,7 @@
         .header h1 {
             font-size: 3rem;
             margin-bottom: 10px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background: linear-gradient(45deg, #320048, #04088a, #00a2ff, #a900b2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -51,20 +51,20 @@
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid transparent;
             border-radius: 25px;
-            color: #fff;
-            cursor: pointer;
+            color: #b500f6;
+            cursor: crosshair;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             font-weight: 500;
         }
 
         .filter-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(58, 1, 77, 0.848);
             transform: translateY(-2px);
         }
 
         .filter-btn.active {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background: linear-gradient(45deg, #33003a, #000dfc);
             border-color: rgba(255, 255, 255, 0.3);
         }
 
@@ -80,7 +80,7 @@
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.4s ease;
-            cursor: pointer;
+            cursor: crosshair;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -128,7 +128,7 @@
             border-radius: 25px;
             color: white;
             font-size: 1.1rem;
-            cursor: pointer;
+            cursor: crosshair;
             transition: all 0.3s ease;
             font-weight: 600;
         }
@@ -177,15 +177,15 @@
             position: absolute;
             top: 20px;
             right: 35px;
-            color: #fff;
+            color: #00eeff;
             font-size: 40px;
             font-weight: bold;
-            cursor: pointer;
+            cursor: crosshair;
             transition: color 0.3s ease;
         }
 
         .close:hover {
-            color: #ff6b6b;
+            color: #1d0056;
         }
 
         /* Loading animation */
@@ -245,16 +245,16 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>My Portfolio</h1>
-            <p>Exploring creativity across mediums</p>
+            <h1>The Chaos</h1>
+            <p>Nothing is linear here, my mind is forever omni-directional</p>
         </div>
 
         <div class="filters">
             <button class="filter-btn active" data-filter="all">All Work</button>
             <button class="filter-btn" data-filter="digital-art">Digital Art</button>
             <button class="filter-btn" data-filter="canvas">Canvas</button>
-            <button class="filter-btn" data-filter="installations">Installations</button>
-            <button class="filter-btn" data-filter="functional">Functional</button>
+            <button class="filter-btn" data-filter="OntheWall">Out in the Street</button>
+            <button class="filter-btn" data-filter="AIrt">Me Myself and AI</button>
         </div>
 
         <div class="gallery" id="gallery">
@@ -263,10 +263,10 @@
 
         <div class="loading" id="loading" style="display: none;">
             <div class="loader"></div>
-            <p>Loading artwork...</p>
+            <p>Bending Time...</p>
         </div>
 
-        <button class="load-more" id="loadMore">Load More</button>
+        <button class="load-more" id="loadMore">Slap Dark Matter</button>
     </div>
 
     <!-- Modal for full-size images -->
@@ -292,15 +292,15 @@
                 { title: 'Mixed Media #3', thumbnail: 'images/canvas/thumbnails/canvas-3.jpg', fullsize: 'images/canvas/full-size/canvas-3.jpg' },
                 // Add more canvas items...
             ],
-            'installations': [
-                { title: 'Installation Piece #1', thumbnail: 'images/installations/thumbnails/install-1.jpg', fullsize: 'images/installations/full-size/install-1.jpg' },
-                { title: 'Interactive Art #2', thumbnail: 'images/installations/thumbnails/install-2.jpg', fullsize: 'images/installations/full-size/install-2.jpg' },
+            'OntheWall': [
+                { title: 'Installation Piece #1', thumbnail: 'images/OntheWall/thumbnails/install-1.jpg', fullsize: 'images/OntheWall/full-size/install-1.jpg' },
+                { title: 'Interactive Art #2', thumbnail: 'images/OntheWall/thumbnails/install-2.jpg', fullsize: 'images/OntheWall/full-size/install-2.jpg' },
                 // Add more installation items...
             ],
-            'functional': [
-                { title: 'Functional Design #1', thumbnail: 'images/functional/thumbnails/func-1.jpg', fullsize: 'images/functional/full-size/func-1.jpg' },
-                { title: 'Sculptural Object #2', thumbnail: 'images/functional/thumbnails/func-2.jpg', fullsize: 'images/functional/full-size/func-2.jpg' },
-                // Add more functional items...
+            'AIrt': [
+                { title: 'AIrt Design #1', thumbnail: 'images/AIrt/thumbnails/func-1.jpg', fullsize: 'images/AIrt/full-size/func-1.jpg' },
+                { title: 'Sculptural Object #2', thumbnail: 'images/AIrt/thumbnails/func-2.jpg', fullsize: 'images/AIrt/full-size/func-2.jpg' },
+                // Add more AIrt items...
             ]
         };
 

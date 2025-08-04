@@ -117,7 +117,7 @@ class IndustrialSoundEngine {
             }
         }
     }
-    playMetallicClick() {
+    playMetallicClick(volume = 0.15) {
         if (!this.audioContext) return;
         const oscillator = this.audioContext.createOscillator();
         const gainNode = this.audioContext.createGain();
@@ -130,7 +130,7 @@ class IndustrialSoundEngine {
         oscillator.type = 'square';
         filter.type = 'highpass';
         filter.frequency.setValueAtTime(300, this.audioContext.currentTime);
-        gainNode.gain.setValueAtTime(0.15, this.audioContext.currentTime);
+        gainNode.gain.setValueAtTime(volume, this.audioContext.currentTime); // Use volume here
         gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.08);
         oscillator.start();
         oscillator.stop(this.audioContext.currentTime + 0.08);
@@ -275,6 +275,36 @@ class IndustrialSoundEngine {
         oscillator1.stop(this.audioContext.currentTime + 1.4);
         oscillator2.stop(this.audioContext.currentTime + 1.4);
     }
+    playTypewriterClick(volume = 0.12) {
+        if (!this.audioContext) return;
+
+        // Short noise burst for the "click"
+        const bufferSize = this.audioContext.sampleRate * 0.015; // ~15ms
+        const buffer = this.audioContext.createBuffer(1, bufferSize, this.audioContext.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            // Envelope for a sharp attack and quick decay
+            const envelope = Math.exp(-i / (bufferSize * 0.6));
+            data[i] = (Math.random() * 2 - 1) * envelope;
+        }
+        const source = this.audioContext.createBufferSource();
+        source.buffer = buffer;
+
+        // Highpass filter to make it "clicky"
+        const filter = this.audioContext.createBiquadFilter();
+        filter.type = 'highpass';
+        filter.frequency.setValueAtTime(1200, this.audioContext.currentTime);
+
+        // Gain for volume control
+        const gainNode = this.audioContext.createGain();
+        gainNode.gain.setValueAtTime(volume, this.audioContext.currentTime);
+
+        source.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+
+        source.start();
+    }
 }
 
 const soundEngine = new IndustrialSoundEngine();
@@ -411,7 +441,7 @@ function typeWriter(element, text, speed = 50) {
     function type() {
         if (i < text.length) {
             element.innerHTML += text.charAt(i);
-            if (soundsEnabled) soundEngine.playMetallicClick();
+            if (soundsEnabled) soundEngine.playTypewriterClick(0.08);
             i++;
             setTimeout(type, speed);
         }
@@ -500,4 +530,24 @@ document.getElementById('about-trigger').addEventListener('click', function(e) {
 
 document.getElementById('about-close').addEventListener('click', function() {
     document.getElementById('about-curtain').classList.remove('active');
+});
+
+// --- Video Chaos Effect ---
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('chaos-video');
+    const playBtn = document.getElementById('chaos-play');
+    const proceedBtn = document.getElementById('chaos-proceed');
+
+    playBtn.addEventListener('click', function() {
+        video.play();
+        playBtn.style.display = 'none';
+    });
+
+    video.addEventListener('ended', function() {
+        proceedBtn.disabled = false;
+    });
+
+    if (video) {
+        video.volume = 1.0; // Maximum volume (range: 0.0 to 1.0)
+    }
 });
