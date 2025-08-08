@@ -32,7 +32,7 @@
         .header h1 {
             font-size: 3rem;
             margin-bottom: 10px;
-            background: linear-gradient(45deg, #320048, #04088a, #00a2ff, #a900b2);
+            background: linear-gradient(45deg, #5a0280, #fa00e1, #ff0000, #ff4d00, #ffbb00, #eeff00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -51,10 +51,10 @@
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid transparent;
             border-radius: 25px;
-            color: #b500f6;
+            color: #353535;
             cursor: crosshair;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(33px);
             font-weight: 500;
         }
 
@@ -64,8 +64,8 @@
         }
 
         .filter-btn.active {
-            background: linear-gradient(45deg, #33003a, #000dfc);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(45deg, #61006e, #d39000);
+            border-color: rgba(21, 1, 55, 0.3);
         }
 
         .gallery {
@@ -82,13 +82,13 @@
             transition: all 0.4s ease;
             cursor: crosshair;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 242, 255, 0.1);
         }
 
         .gallery-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(108, 2, 85, 0.499);
+            border-color: rgba(0, 234, 255, 0.541);
         }
 
         .gallery-item img {
@@ -109,7 +109,7 @@
         .item-title {
             font-size: 1.2rem;
             margin-bottom: 8px;
-            color: #fff;
+            color: #c55c00;
         }
 
         .item-category {
@@ -126,7 +126,7 @@
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
             border: none;
             border-radius: 25px;
-            color: white;
+            color: rgb(255, 111, 0);
             font-size: 1.1rem;
             cursor: crosshair;
             transition: all 0.3s ease;
@@ -145,7 +145,7 @@
             box-shadow: none;
         }
 
-        /* Modal for full-size images */
+        /* Modal for full images */
         .modal {
             display: none;
             position: fixed;
@@ -255,6 +255,7 @@
             <button class="filter-btn" data-filter="canvas">Canvas</button>
             <button class="filter-btn" data-filter="OntheWall">Function, Form and Free-walls</button>
             <button class="filter-btn" data-filter="AIrt">Me Myself and AI</button>
+            <button class="filter-btn" data-filter="AIrt">This is me though</button>
         </div>
 
         <div class="gallery" id="gallery">
@@ -269,7 +270,7 @@
         <button class="load-more" id="loadMore">Slap Dark Matter</button>
     </div>
 
-    <!-- Modal for full-size images -->
+    <!-- Modal for full images -->
     <div class="modal" id="modal">
         <span class="close" id="closeModal">&times;</span>
         <div class="modal-content">
@@ -277,170 +278,6 @@
         </div>
     </div>
 
-    <script>
-        // Portfolio data structure - Replace with your actual image data
-        const portfolioData = {
-            'digital-art': [
-                { title: 'Digital Composition #1', thumbnail: 'images/digital-art/thumbnails/digital-1.jpg', fullsize: 'images/digital-art/full-size/digital-1.jpg' },
-                { title: 'Abstract Digital #2', thumbnail: 'images/digital-art/thumbnails/digital-2.jpg', fullsize: 'images/digital-art/full-size/digital-2.jpg' },
-                { title: 'Concept Art #3', thumbnail: 'images/digital-art/thumbnails/digital-3.jpg', fullsize: 'images/digital-art/full-size/digital-3.jpg' },
-                // Add more digital art items...
-            ],
-            'canvas': [
-                { title: 'Oil Painting #1', thumbnail: 'images/canvas/thumbnails/canvas-1.jpg', fullsize: 'images/canvas/full-size/canvas-1.jpg' },
-                { title: 'Acrylic Abstract #2', thumbnail: 'images/canvas/thumbnails/canvas-2.jpg', fullsize: 'images/canvas/full-size/canvas-2.jpg' },
-                { title: 'Mixed Media #3', thumbnail: 'images/canvas/thumbnails/canvas-3.jpg', fullsize: 'images/canvas/full-size/canvas-3.jpg' },
-                // Add more canvas items...
-            ],
-            'OntheWall': [
-                { title: 'Installation Piece #1', thumbnail: 'images/OntheWall/thumbnails/install-1.jpg', fullsize: 'images/OntheWall/full-size/install-1.jpg' },
-                { title: 'Interactive Art #2', thumbnail: 'images/OntheWall/thumbnails/install-2.jpg', fullsize: 'images/OntheWall/full-size/install-2.jpg' },
-                // Add more installation items...
-            ],
-            'AIrt': [
-                { title: 'AIrt Design #1', thumbnail: 'images/AIrt/thumbnails/func-1.jpg', fullsize: 'images/AIrt/full-size/func-1.jpg' },
-                { title: 'Sculptural Object #2', thumbnail: 'images/AIrt/thumbnails/func-2.jpg', fullsize: 'images/AIrt/full-size/func-2.jpg' },
-                // Add more AIrt items...
-            ]
-        };
-
-        let currentFilter = 'all';
-        let currentPage = 0;
-        const itemsPerPage = 12;
-        let allItems = [];
-
-        // Initialize the gallery
-        function init() {
-            // Flatten all portfolio items for 'all' filter
-            allItems = [];
-            Object.keys(portfolioData).forEach(category => {
-                portfolioData[category].forEach(item => {
-                    allItems.push({...item, category});
-                });
-            });
-
-            loadItems();
-            setupEventListeners();
-        }
-
-        // Load items based on current filter and page
-        function loadItems() {
-            const loading = document.getElementById('loading');
-            loading.style.display = 'block';
-
-            // Simulate loading delay (remove this in production)
-            setTimeout(() => {
-                const gallery = document.getElementById('gallery');
-                const items = getFilteredItems();
-                const startIndex = currentPage * itemsPerPage;
-                const endIndex = startIndex + itemsPerPage;
-                const pageItems = items.slice(startIndex, endIndex);
-
-                if (currentPage === 0) {
-                    gallery.innerHTML = '';
-                }
-
-                pageItems.forEach(item => {
-                    const galleryItem = createGalleryItem(item);
-                    gallery.appendChild(galleryItem);
-                });
-
-                // Update load more button
-                const loadMoreBtn = document.getElementById('loadMore');
-                if (endIndex >= items.length) {
-                    loadMoreBtn.style.display = 'none';
-                } else {
-                    loadMoreBtn.style.display = 'block';
-                }
-
-                loading.style.display = 'none';
-            }, 500);
-        }
-
-        // Get filtered items based on current filter
-        function getFilteredItems() {
-            if (currentFilter === 'all') {
-                return allItems;
-            } else {
-                return portfolioData[currentFilter] || [];
-            }
-        }
-
-        // Create gallery item element
-        function createGalleryItem(item) {
-            const div = document.createElement('div');
-            div.className = 'gallery-item';
-            div.innerHTML = `
-                <img src="${item.thumbnail}" alt="${item.title}" loading="lazy">
-                <div class="item-info">
-                    <div class="item-title">${item.title}</div>
-                    <div class="item-category">${item.category.replace('-', ' ')}</div>
-                </div>
-            `;
-
-            // Add click event for modal
-            div.addEventListener('click', () => {
-                openModal(item.fullsize, item.title);
-            });
-
-            return div;
-        }
-
-        // Setup event listeners
-        function setupEventListeners() {
-            // Filter buttons
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    // Update active filter
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    
-                    currentFilter = e.target.dataset.filter;
-                    currentPage = 0;
-                    loadItems();
-                });
-            });
-
-            // Load more button
-            document.getElementById('loadMore').addEventListener('click', () => {
-                currentPage++;
-                loadItems();
-            });
-
-            // Modal events
-            document.getElementById('closeModal').addEventListener('click', closeModal);
-            document.getElementById('modal').addEventListener('click', (e) => {
-                if (e.target === e.currentTarget) {
-                    closeModal();
-                }
-            });
-
-            // Keyboard events
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeModal();
-                }
-            });
-        }
-
-        // Modal functions
-        function openModal(imageSrc, title) {
-            const modal = document.getElementById('modal');
-            const modalImg = document.getElementById('modalImg');
-            modal.style.display = 'block';
-            modalImg.src = imageSrc;
-            modalImg.alt = title;
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', init);
-    </script>
+    <script src="portfolio.js" defer></script>
 </body>
 </html>
