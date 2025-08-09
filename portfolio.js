@@ -14,11 +14,11 @@
                 { title: 'Smile', thumbnail: 'assets/images/canvas/thumbs/canvasthumb8.jpg', fullsize: 'assets/images/canvas/full/canvas8.jpg' },
                 { title: 'Row Your boat, I got my own', thumbnail: 'assets/images/canvas/thumbs/canvasthumb9.jpg', fullsize: 'assets/images/canvas/full/canvas9.jpg' }
             ],
-            'ontheWall': [
-                { title: 'Coming Soon', thumbnail: 'assets/images/out-in-the-Street/thumbs/placeholder.jpg', fullsize: 'assets/images/out-in-the-Street/full/placeholder.jpg' }
+            'onthewall': [
+                { title: 'Coming Soon', thumbnail: 'assets/images/out-in-the-street/thumbs/placeholder.jpg', fullsize: 'assets/images/out-in-the-street/full/placeholder.jpg' }
             ],
-            'aIrt': [
-                { title: 'Coming Soon', thumbnail: 'assets/images/aIrt/thumbs/placeholder.jpg', fullsize: 'assets/images/aIrt/full/placeholder.jpg' }
+            'airt': [
+                { title: 'Coming Soon', thumbnail: 'assets/images/airt/thumbs/placeholder.jpg', fullsize: 'assets/images/airt/full/placeholder.jpg' }
             ]
         };
 
