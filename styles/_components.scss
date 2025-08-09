@@ -43,7 +43,6 @@
 }
 
 /* Easter Egg Counter */
-.easter-egg {
   position: relative;
   width: 12px;
   height: 12px;
@@ -463,7 +462,6 @@
   }
 }
 
-.easter-egg {
   position: fixed;
   width: 24px;
   height: 24px;
@@ -475,7 +473,6 @@
   transition: box-shadow 0.3s, transform 0.3s;
   border: 2px solid #fff;
 }
-.easter-egg:hover {
   background: var(--warning-orange, #CC4125);
   box-shadow: 0 0 20px rgba(204, 65, 37, 0.8);
   transform: scale(1.2);

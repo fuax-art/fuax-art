@@ -395,13 +395,6 @@ document.addEventListener('keydown', function(e) {
         e.preventDefault();
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     }
-    if (e.altKey && e.key === 'e') {
-        e.preventDefault();
-        const egg = document.querySelector('.easter-egg');
-        if (egg) egg.click();
-    }
-    if (e.key === 'Escape') {
-        document.querySelectorAll('.modal.active').forEach(modal => {
             closeModal(modal.id);
         });
     }
@@ -460,13 +453,20 @@ function startHeroTypewriter() {
 window.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('chaos-overlay');
     const proceedBtn = document.getElementById('chaos-proceed');
+
+    // Only show overlay if not already seen in this session
     if (overlay && proceedBtn) {
-        proceedBtn.addEventListener('click', async () => {
+        if (sessionStorage.getItem('chaosOverlaySeen')) {
             overlay.style.display = 'none';
-            await initializeSounds();
             startHeroTypewriter();
-            // You can trigger other effects here if needed
-        });
+        } else {
+            proceedBtn.addEventListener('click', async () => {
+                overlay.style.display = 'none';
+                sessionStorage.setItem('chaosOverlaySeen', 'true');
+                await initializeSounds();
+                startHeroTypewriter();
+            });
+        }
     } else {
         // Fallback: if overlay missing, just run typewriter
         startHeroTypewriter();
@@ -475,11 +475,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // --- Easter Egg & Video Modal ---
 window.addEventListener('DOMContentLoaded', () => {
-    const easterEgg = document.querySelector('.easter-egg');
-    const videoModal = document.getElementById('videoModal');
     const closeVideoModal = document.getElementById('closeVideoModal');
-    const youtubeFrame = document.getElementById('youtubeFrame');
-    const youtubeVideoId = 'dQw4w9WgXcQ'; // Replace with your YouTube video ID
 
     // Define your 3 locations (left, top) in pixels
     const eggPositions = [
@@ -498,22 +494,17 @@ window.addEventListener('DOMContentLoaded', () => {
         easterEgg.style.position = 'fixed';
     }
 
-    if (easterEgg && videoModal && closeVideoModal && youtubeFrame) {
         easterEgg.addEventListener('click', () => {
             clickCount++;
             if (clickCount < maxClicks) {
                 moveEasterEggToPosition(clickCount);
             } else {
-                videoModal.classList.add('active');
-                youtubeFrame.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1`;
                 easterEgg.style.display = 'none';
                 if (soundsEnabled) soundEngine.playMachineStartup();
             }
         });
 
         closeVideoModal.addEventListener('click', () => {
-            videoModal.classList.remove('active');
-            youtubeFrame.src = '';
         });
 
         // On page load, reset to first position
