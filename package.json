@@ -3,9 +3,12 @@
     "@fullhuman/postcss-purgecss": "^7.0.2",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
-    "purgecss": "^7.0.2"
+    "purgecss": "^7.0.2",
+    "sass": "^1.32.0"
   },
   "scripts": {
-    "purgecss": "purgecss --css styles/main.min.css --content index.html portfoliopage.html blogfog/*.html draw/draw.html --output styles/"
+    "sass": "sass styles/main.scss styles/main.min.css --style=compressed",
+    "purgecss": "purgecss --css styles/main.min.css --content index.html portfoliopage.html blogfog/*.html draw/draw.html whitepaper.html --output styles/",
+    "build": "npm run sass && npm run purgecss"
   }
 }
