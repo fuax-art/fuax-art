@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forever Unfinished Artworx - Hub</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- CORE STYLES --- */
+        :root {
+            --neon-cyan: #00fff7;
+            --neon-yellow: #eaff00;
+            --glass-bg: rgba(0, 0, 0, 0.6);
+            --glass-border: 1px solid rgba(0, 255, 247, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            color: #e0e0e0;
+            background: black;
+            overflow: hidden; /* Prevents scrolling, makes it feel like an app */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #vanta-bg { position: fixed; inset: 0; z-index: -10; }
+
+        /* --- HEADER --- */
+        .main-title {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+            z-index: 10;
+            pointer-events: none; /* Let clicks pass through to cubes if needed */
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(0, 255, 247, 0.5);
+        }
+
+        /* --- THE GRID SYSTEM --- */
+        .hub-container {
+            position: relative;
+            width: 900px;
+            height: 600px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            grid-template-rows: repeat(2, 1fr);    /* 2 rows */
+            gap: 20px;
+            perspective: 1000px;
+            transition: all 0.5s ease;
+        }
+
+        /* --- THE CUBE (Parent) --- */
+        .cube {
+            background: var(--glass-bg);
+            border: var(--glass-border);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cube:hover {
+            box-shadow: 0 0 20px var(--neon-cyan);
+            border-color: var(--neon-yellow);
+            transform: scale(1.02);
+        }
+
+        .cube h2 {
+            font-size: 1.8em;
+            color: var(--neon-yellow);
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .cube i {
+            font-size: 3em;
+            color: var(--neon-cyan);
+        }
+
+        /* --- THE CHILDREN (Hidden Links) --- */
+        .cube-content {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .child-link {
+            width: 80%;
+            padding: 15px;
+            margin: 8px 0;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--neon-cyan);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .child-link:hover {
+            background: var(--neon-cyan);
+            color: black;
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        /* --- ZOOM STATE (Active) --- */
+        /* When a cube is active, it expands to fill the container */
+        .cube.active {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            cursor: default;
+            transform: none !important; /* Stop hover effect */
+        }
+
+        /* Hide the initial Icon/Title when active */
+        .cube.active .cube-cover { display: none; }
+        
+        /* Show the content when active */
+        .cube.active .cube-content {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Hide other cubes when one is active */
+        .hub-container.has-active .cube:not(.active) {
+            transform: scale(0); /* Shrink them away */
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* --- RETURN BUTTON --- */
+        .back-btn {
+            position: absolute;
+            top: 30px; 
+            left: 30px;
+            color: var(--neon-cyan);
+            font-size: 1em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            display: none; /* Hidden until zoomed */
+            z-index: 101;
+            border: 1px solid var(--neon-cyan);
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.8);
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--neon-cyan);
+            color: black;
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        .cube.active .back-btn { display: block; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            body { height: auto; overflow-y: auto; padding: 20px 0; }
+            .hub-container {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                padding: 0 20px;
+            }
+            .cube { height: 150px; }
+            .cube.active { 
+                position: fixed; 
+                top: 0; left: 0; 
+                height: 100vh; 
+                border-radius: 0; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="vanta-bg"></div>
+
+    <div class="main-title">
+        <h1>Forever Unfinished</h1>
+    </div>
+
+    <div class="hub-container" id="hub">
+
+        <div class="cube" onclick="zoomIn(this)">
+            <div class="back-btn" onclick="zoomOut(event, this)"><i class="fas fa-arrow-left"></i> RETURN SYSTEM</div>
+            
+            <div class="cube-cover">
+                <i class="fas fa-shopping-cart"></i>
+                <h2>Shop</h2>
+            </div>
+
+            <div class="cube-content">
+                <h2>The Goods</h2>
+                <a href="https://foreverunfinishedartworx.square.site" target="_blank" class="child-link">Main Shop</a>
+                <a href="https://foreverunfinishedartworx.square.site/product/1980hd-minimalist-pack/EH7ZR4VWQG2XV5RMAUB2MLD5" target="_blank" class="child-link">1980HD Pack</a>
+                <a href="https://foreverunfinishedartworx.square.site/product/beautiful-chaos-framed-canvas/UHNET5PA4OKHZH3GQDPEZQ5H" target="_blank" class="child-link">Beautiful Chaos Canvas</a>
+            </div>
+        </div>
+
+        <div class="cube" onclick="zoomIn(this)">
+            <div class="back-btn" onclick="zoomOut(event, this)"><i class="fas fa-arrow-left"></i> RETURN SYSTEM</div>
+            <div class="cube-cover">
+                <i class="fas fa-music"></i>
+                <h2>Music</h2>
+            </div>
+            <div class="cube-content">
+                <h2>Audio Logs</h2>
+                <a href="https://soundcloud.com/faux-fuax" target="_blank" class="
